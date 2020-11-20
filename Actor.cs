@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System;
+using System.Text.Json;
 
 namespace Adventure
 {
@@ -23,7 +24,6 @@ namespace Adventure
         {
             Console.Clear();
             Console.WriteLine(message);
-
             if (responses == null)
             {
                 Console.WriteLine("Press any key to continue...");

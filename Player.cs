@@ -1,6 +1,8 @@
+using System;
+
 namespace Adventure
 {
-    public class Player : Actor
+    public class Player
     {
         public LevelPosition position { get; private set; }
 

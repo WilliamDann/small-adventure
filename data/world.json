@@ -9,8 +9,8 @@
     },
 
     "levels":
-    [
-        {
+    {
+        "The Crossroads" : {
             "name": "The Crossroads",
             "width": 5,
             "height": 5,
@@ -21,11 +21,11 @@
                 "2,1": "H"
             }
         }
-    ],
+    },
 
     "actors":
-    [
-        {
+    {
+        "H": {
             "character": "H",
             "displayName": "Old Man Charlie",
             
@@ -56,5 +56,5 @@
                 }
             }
         }
-    ]
+    }
 }

@@ -14,8 +14,8 @@ namespace Adventure
             TextFileEvent keyMenu     = new TextFileEvent("screens/key.txt");
             introMenu.Run();
 
-            Level level = world.levels[0];
-            level.Initilize(world.player);
+            Level level = world.levels["The Crossroads"];
+            level.Initilize(world);
 
             bool done = false;
             while (!done)

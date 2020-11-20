@@ -1,5 +1,5 @@
 using System.Collections.Generic;
-
+using System;
 namespace Adventure
 {
     public class Level
@@ -13,27 +13,35 @@ namespace Adventure
         public Dictionary<string, string> objects { get; set; }
 
         // local data
-        Player player;
+        World world;
 
-        public void Initilize(Player player)
+        public void Initilize(World world)
         {
-            this.player = player;
-            player.SetPosition(spawnPosition);
+            this.world = world;
+            world.player.SetPosition(spawnPosition);
         }
 
         public void MovePlayer(LevelPosition distance)
         {
-            int newX = player.position.x + distance.x;
-            int newY = player.position.y + distance.y;
-            if (0 > newX || width-1 < newX)
+            LevelPosition newPos = new LevelPosition(
+                world.player.position.x + distance.x,
+                world.player.position.y + distance.y
+            );
+
+            if (0 > newPos.x || width-1 < newPos.x)
                 return;
-            if (0 > newY || height-1 < newY)
+            if (0 > newPos.y || height-1 < newPos.y)
                 return;
 
-            player.SetPosition(new LevelPosition(newX, newY));
-            if (objects.ContainsKey(distance.ToString()))
+
+            if (objects.ContainsKey(newPos.ToString()))
             {
-                // interact with object
+                Actor interact = world.actors[objects[newPos.ToString()]];
+                if (interact != null)
+                    interact.encounter.Run();
+            } else 
+            {
+                world.player.SetPosition(newPos);
             }
         }
 
@@ -47,7 +55,7 @@ namespace Adventure
                 {
                     string coord = $"{y},{x}";
 
-                    if ($"{player.position.x},{player.position.y}" == coord)
+                    if ($"{world.player.position.x},{world.player.position.y}" == coord)
                     {
                         display += " @ ";
                     }

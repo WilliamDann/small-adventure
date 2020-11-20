@@ -1,12 +1,9 @@
-using NLog;
 using System.Collections.Generic;
 
 namespace Adventure
 {
     public class Level
     {
-        static readonly Logger logger = LogManager.GetCurrentClassLogger(); 
-
         // JSON populated data
         public string name  { get; set; }
         public int    width { get; set; } 
@@ -38,7 +35,6 @@ namespace Adventure
             {
                 // interact with object
             }
-
         }
 
         public override string ToString()

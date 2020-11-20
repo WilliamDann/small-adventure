@@ -9,5 +9,7 @@ namespace Adventure
         public string name      { get; set; }
 
         public string character { get; set; }
+
+        public List<string> lines { get; set; }
     }
 }

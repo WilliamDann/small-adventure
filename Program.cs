@@ -5,20 +5,20 @@ using System.Text.Json;
 namespace Adventure
 {
     class Program
-    {        
+    {
         static void Main(string[] args)
         {
             Player player = JsonSerializer.Deserialize<Player>(File.ReadAllText("data/player.json"));
+            IMenu introMenu   = new TextFileMenu("screens/intro.txt");
+            IMenu controlMenu = new TextFileMenu("screens/controls.txt");
+            IMenu keyMenu     = new TextFileMenu("screens/key.txt");
 
-            bool done = false;
-
-            Console.Clear();
-            Console.WriteLine(File.ReadAllText("screens/intro.txt"));
-            Console.WriteLine("Press any key to continue...");
-            Console.ReadKey();
+            introMenu.ShowMenu();
 
             Level crossroads = JsonSerializer.Deserialize<Level>(File.ReadAllText("data/levels/crossroads.json"));
             crossroads.Initilize(player);
+            
+            bool done = false;
             while (!done)
             {
                 Console.Clear();
@@ -51,16 +51,10 @@ namespace Adventure
                         done = true;
                         break;
                     case "help":
-                        Console.Clear();
-                        Console.WriteLine(File.ReadAllText("screens/controls.txt"));
-                        Console.WriteLine("Press any key to continue...");
-                        Console.ReadKey();
+                        controlMenu.ShowMenu();
                         break;
                     case "key":
-                        Console.Clear();
-                        Console.WriteLine(File.ReadAllText("screens/key.txt"));
-                        Console.WriteLine("Press any key to continue...");
-                        Console.ReadKey();
+                        keyMenu.ShowMenu();
                         break;
                 }
             }

@@ -1,0 +1,8 @@
+Adventure Character Key
+Created by William Dann
+
+Characters
+--------------
+@ : This is you, the player.
+
+G : A town guard, guarding enterances to the town

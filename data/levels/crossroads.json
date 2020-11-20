@@ -2,9 +2,10 @@
     "name": "The Crossroads",
     "width": 5,
     "height": 5,
+
+    "spawnPosition": { "x": 2, "y": 3 },
     "objects":
     {
-        "2,1": "G",
-        "2,3": "P"
+        "2,1": "G"
     }
 }

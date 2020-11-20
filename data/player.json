@@ -1,0 +1,7 @@
+{
+    "character": "@",
+    "displayName": "Player",
+    
+    "hp": 20,
+    "maxHP": 20
+}

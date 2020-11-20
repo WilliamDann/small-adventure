@@ -7,7 +7,7 @@ namespace Adventure
         public int hp           { get; set; }
         public int maxHP        { get; set; }
         public string name      { get; set; }
-        
+
         public string character { get; set; }
     }
 }

@@ -11,3 +11,6 @@ C:\Users\William\Documents\school\lwtech\csd\csd_228\Adventure\obj\Debug\netcore
 C:\Users\William\Documents\school\lwtech\csd\csd_228\Adventure\obj\Debug\netcoreapp3.1\Adventure.dll
 C:\Users\William\Documents\school\lwtech\csd\csd_228\Adventure\obj\Debug\netcoreapp3.1\Adventure.pdb
 C:\Users\William\Documents\school\lwtech\csd\csd_228\Adventure\obj\Debug\netcoreapp3.1\Adventure.genruntimeconfig.cache
+C:\Users\William\Documents\school\lwtech\csd\csd_228\Adventure\bin\Debug\netcoreapp3.1\NLog.config
+C:\Users\William\Documents\school\lwtech\csd\csd_228\Adventure\bin\Debug\netcoreapp3.1\NLog.dll
+C:\Users\William\Documents\school\lwtech\csd\csd_228\Adventure\obj\Debug\netcoreapp3.1\Adventure.csproj.CopyComplete

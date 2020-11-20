@@ -3,6 +3,7 @@ Created by William Dann
 
 General
 -----------------
+key:   list key of map characters seen on the map and their meanings
 help:  list commands
 quit:  Quit Program
 

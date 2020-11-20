@@ -13,7 +13,7 @@
         "The Crossroads" : {
             "name": "The Crossroads",
             "spawnPosition": { "x": 2, "y": 3 },
-            "surroundingLevels": ["The River", "The Bridge", null, null],
+            "surroundingLevels": ["The River", "The Bridge", null, "The Forest"],
             "map":
             [
                 "_____",
@@ -53,6 +53,21 @@
                 "___..__0_"
 
             ]
+        },
+        "The Forest" : {
+            "name": "The Forest",
+            "spawnPosition": { "x": 8, "y": 3 },
+            "surroundingLevels": [null, "The Crossroads", null, null],
+            "map":
+            [
+                "_0___0_0_",
+                "__0_0____",
+                "C_0___0__",
+                "CH_______",
+                "C_0__0___",
+                "__0____0_"
+
+            ]
         }
     },
 
@@ -62,9 +77,6 @@
         {
             "character": ".",
             "displayName": "River Water",
-
-            "hp": 100000,
-            "maxHP": 10000,
 
             "encounter":
             {

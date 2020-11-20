@@ -93,7 +93,7 @@ namespace Adventure
             }
 
             string ground = GetCharAt(newPos);
-            if (ground == "_")
+            if (ground == "_" || ground == "=")
             {
                 world.player.SetPosition(newPos);
             }

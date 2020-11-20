@@ -13,7 +13,7 @@
         "The Crossroads" : {
             "name": "The Crossroads",
             "spawnPosition": { "x": 2, "y": 3 },
-            "surroundingLevels": ["The River", null, null, null],
+            "surroundingLevels": ["The River", "The Bridge", null, null],
             "map":
             [
                 "_____",
@@ -37,6 +37,21 @@
                 "_______",
                 "_______",
                 "_______"
+            ]
+        },
+        "The Bridge" : {
+            "name": "The Bridge",
+            "spawnPosition": { "x": 0, "y": 4 },
+            "surroundingLevels": [null, null, null, "The Crossroads"],
+            "map":
+            [
+                ".__0_0___",
+                "...____0_",
+                "_....0___",
+                "_0_..____",
+                "___==____",
+                "___..__0_"
+
             ]
         }
     },

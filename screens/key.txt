@@ -4,5 +4,12 @@ Created by William Dann
 Characters
 --------------
 @ : This is you, the player.
+H : A human
 
-G : A town guard, guarding enterances to the town
+Terrain
+--------------
+_ : An empty groud tile
+= : An elevated grounud tile (like a bridge)
+. : Water
+
+0 : A tree's trunk

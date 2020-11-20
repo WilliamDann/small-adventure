@@ -20,6 +20,9 @@ namespace Adventure
         public Dictionary<string, TextEncounter> responses { get; set; }
         public string runnableString { get; set; }
 
+        public TextEncounter() { }
+        public TextEncounter(string message): base(message) { }
+
         public override void Run()
         {
             Console.Clear();
@@ -31,8 +34,11 @@ namespace Adventure
                 return;
             }
 
+            Dictionary<string, TextEncounter> responsesCopy = new Dictionary<string, TextEncounter>(responses);
+            responsesCopy.Add("Say Goodbye", new TextEncounter("Good travels, adventuerer!"));
+
             List<string> numbered = new List<String>();
-            foreach(string response in responses.Keys)
+            foreach(string response in responsesCopy.Keys)
             {
                 Console.WriteLine($"{numbered.Count}: {response}");
                 numbered.Add(response);
@@ -43,14 +49,16 @@ namespace Adventure
             try
             {
                 int choice = int.Parse(Console.ReadLine());
-                newEncounter = responses[numbered[choice]];
+                newEncounter = responsesCopy[numbered[choice]];
             } catch (FormatException)
             {
                 Console.WriteLine("Huh? I dont understand that");
+                Console.ReadKey();
                 return;
-            } catch (IndexOutOfRangeException)
+            } catch (ArgumentOutOfRangeException)
             {
                 Console.WriteLine("Huh? I dont understand that");
+                Console.ReadKey();
                 return;
             }
 

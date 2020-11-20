@@ -1,0 +1,10 @@
+{
+    "name": "The Crossroads",
+    "width": 5,
+    "height": 5,
+    "objects":
+    {
+        "2,1": "G",
+        "2,3": "P"
+    }
+}

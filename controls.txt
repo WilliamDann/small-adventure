@@ -1,0 +1,16 @@
+Adventure Controls
+Created by William Dann
+
+General
+-----------------
+help:  list commands
+quit:  Quit Program
+
+Movment
+-----------------
+up:    Move Up
+down:  Move Down
+left:  Move Right
+right: Move Right
+
+Move into an NPC / Object to interact with it.

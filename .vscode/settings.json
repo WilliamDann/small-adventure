@@ -1,0 +1,13 @@
+{
+    "spellright.language": [
+        "en"
+    ],
+    "spellright.documentTypes": [
+        "markdown",
+        "latex"
+    ],
+    "files.exclude": {
+        "bin": true,
+        "obj": true
+    }
+}

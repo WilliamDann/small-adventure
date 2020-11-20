@@ -1,0 +1,13 @@
+C:\Users\William\Documents\school\lwtech\csd\csd_228\Adventure\bin\Debug\netcoreapp3.1\Adventure.exe
+C:\Users\William\Documents\school\lwtech\csd\csd_228\Adventure\bin\Debug\netcoreapp3.1\Adventure.deps.json
+C:\Users\William\Documents\school\lwtech\csd\csd_228\Adventure\bin\Debug\netcoreapp3.1\Adventure.runtimeconfig.json
+C:\Users\William\Documents\school\lwtech\csd\csd_228\Adventure\bin\Debug\netcoreapp3.1\Adventure.runtimeconfig.dev.json
+C:\Users\William\Documents\school\lwtech\csd\csd_228\Adventure\bin\Debug\netcoreapp3.1\Adventure.dll
+C:\Users\William\Documents\school\lwtech\csd\csd_228\Adventure\bin\Debug\netcoreapp3.1\Adventure.pdb
+C:\Users\William\Documents\school\lwtech\csd\csd_228\Adventure\obj\Debug\netcoreapp3.1\Adventure.csprojAssemblyReference.cache
+C:\Users\William\Documents\school\lwtech\csd\csd_228\Adventure\obj\Debug\netcoreapp3.1\Adventure.AssemblyInfoInputs.cache
+C:\Users\William\Documents\school\lwtech\csd\csd_228\Adventure\obj\Debug\netcoreapp3.1\Adventure.AssemblyInfo.cs
+C:\Users\William\Documents\school\lwtech\csd\csd_228\Adventure\obj\Debug\netcoreapp3.1\Adventure.csproj.CoreCompileInputs.cache
+C:\Users\William\Documents\school\lwtech\csd\csd_228\Adventure\obj\Debug\netcoreapp3.1\Adventure.dll
+C:\Users\William\Documents\school\lwtech\csd\csd_228\Adventure\obj\Debug\netcoreapp3.1\Adventure.pdb
+C:\Users\William\Documents\school\lwtech\csd\csd_228\Adventure\obj\Debug\netcoreapp3.1\Adventure.genruntimeconfig.cache

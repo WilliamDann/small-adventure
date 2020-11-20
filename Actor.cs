@@ -35,7 +35,7 @@ namespace Adventure
             }
 
             Dictionary<string, TextEncounter> responsesCopy = new Dictionary<string, TextEncounter>(responses);
-            responsesCopy.Add("Say Goodbye", new TextEncounter("Good travels, adventuerer!"));
+            responsesCopy.Add("Quit", new TextEncounter("You left"));
 
             List<string> numbered = new List<String>();
             foreach(string response in responsesCopy.Keys)

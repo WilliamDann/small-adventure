@@ -12,20 +12,59 @@
     {
         "The Crossroads" : {
             "name": "The Crossroads",
-            "width": 5,
-            "height": 5,
-        
             "spawnPosition": { "x": 2, "y": 3 },
-            "objects":
-            {
-                "2,1": "H"
-            }
+            "map":
+            [
+                "_____",
+                "__H__",
+                "_____",
+                "_____",
+                "_____"
+            ]
+        },
+        "The River" : {
+            "name": "The River",
+            "spawnPosition": { "x": 3, "y": 7 },
+            "map":
+            [
+                "...____",
+                "....___",
+                "__.....",
+                "___....",
+                "_______",
+                "_______",
+                "_______",
+                "_______"
+            ]
         }
     },
 
     "actors":
     {
-        "H": {
+        ".": 
+        {
+            "character": ".",
+            "displayName": "River Water",
+
+            "hp": 100000,
+            "maxHP": 10000,
+
+            "encounter":
+            {
+                "message": "In front of you you see a running river. Do you drink from it?",
+                "responses":
+                {
+                    "Yes":
+                    {
+                        "message": "You feel healed and rested!",
+                        "runnableString" : "heal player 10"
+                    }
+                }
+            }
+        },
+
+        "H": 
+        {
             "character": "H",
             "displayName": "Old Man Charlie",
             

@@ -2,7 +2,7 @@ using System;
 
 namespace Adventure
 {
-    public class Player
+    public class Player : Actor
     {
         public LevelPosition position { get; private set; }
 

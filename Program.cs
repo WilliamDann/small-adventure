@@ -14,15 +14,19 @@ namespace Adventure
             TextFileEvent keyMenu     = new TextFileEvent("screens/key.txt");
             introMenu.Run();
 
-            Level level = world.levels["The River"];
-            level.Initilize(world);
+            Console.Clear();
+            Console.WriteLine("What is your name?");
+            world.player.name = Console.ReadLine();
+
+            world.LoadLevel("The Crossroads");
 
             bool done = false;
             while (!done)
             {
                 Console.Clear();
-                Console.WriteLine(level.name);
-                Console.WriteLine(level);
+                Console.WriteLine(world.CurrentLevel.name);
+                Console.WriteLine(world.CurrentLevel);
+                Console.WriteLine(world.player);
 
                 string input = Console.ReadLine().ToLower();
                 switch (input)
@@ -30,19 +34,19 @@ namespace Adventure
                     // movment
                     case "up":
                     case "u":
-                        level.MovePlayer(new LevelPosition(0, -1));
+                        world.CurrentLevel.MovePlayer(new LevelPosition(0, -1));
                         break;
                     case "down":
                     case "d":
-                        level.MovePlayer(new LevelPosition(0, 1));
+                        world.CurrentLevel.MovePlayer(new LevelPosition(0, 1));
                         break;
                     case "left":
                     case "l":
-                        level.MovePlayer(new LevelPosition(-1, 0));
+                        world.CurrentLevel.MovePlayer(new LevelPosition(-1, 0));
                         break;
                     case "right":
                     case "r":
-                        level.MovePlayer(new LevelPosition(1, 0));
+                        world.CurrentLevel.MovePlayer(new LevelPosition(1, 0));
                         break;
 
                     // menus

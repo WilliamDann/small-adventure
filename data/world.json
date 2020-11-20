@@ -2,7 +2,7 @@
     "player":
     {
         "character": "@",
-        "displayName": "Player",
+        "name": "Player",
         
         "hp": 20,
         "maxHP": 20
@@ -13,6 +13,7 @@
         "The Crossroads" : {
             "name": "The Crossroads",
             "spawnPosition": { "x": 2, "y": 3 },
+            "surroundingLevels": ["The River", null, null, null],
             "map":
             [
                 "_____",
@@ -25,6 +26,7 @@
         "The River" : {
             "name": "The River",
             "spawnPosition": { "x": 3, "y": 7 },
+            "surroundingLevels": [null, null, "The Crossroads", null],
             "map":
             [
                 "...____",

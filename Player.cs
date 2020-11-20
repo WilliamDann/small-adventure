@@ -10,5 +10,10 @@ namespace Adventure
         {
             this.position = position;
         }
+
+        public override string ToString()
+        {
+            return $"---\n{name}\nhp:{hp}\n---";
+        }
     }
 }

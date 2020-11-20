@@ -8,6 +8,9 @@ namespace Adventure
         public string name  { get; set; }
         public string[] map { get; set; }
 
+        // 0=N, 1=E, 2=S, 3=W
+        public string[] surroundingLevels { get; set; }
+
         public LevelPosition spawnPosition { get; set; }
 
         // local data
@@ -56,10 +59,40 @@ namespace Adventure
                 world.player.position.x + distance.x,
                 world.player.position.y + distance.y
             );
+            if (!PositionOnMap(newPos))
+            {
+                // south
+                if (newPos.y >= map.Length)
+                {
+                    if (surroundingLevels[2] != null)
+                        world.LoadLevel(surroundingLevels[2]);
+                }
+
+                // north
+                else if (newPos.y < 0)
+                {
+                    if (surroundingLevels[0] != null)
+                        world.LoadLevel(surroundingLevels[0]);
+                }
+
+                // west
+                else if (newPos.x < 0)
+                {
+                    if (surroundingLevels[3] != null)
+                        world.LoadLevel(surroundingLevels[3]);
+                }
+
+                // east
+                else if (newPos.x >= map[newPos.y].Length)
+                {
+                    if (surroundingLevels[1] != null)
+                        world.LoadLevel(surroundingLevels[1]);
+                }
+
+                return;
+            }
+
             string ground = GetCharAt(newPos);
-            
-            if (ground == null) return;
-            
             if (ground == "_")
             {
                 world.player.SetPosition(newPos);

@@ -1,0 +1,60 @@
+{
+    "player":
+    {
+        "character": "@",
+        "displayName": "Player",
+        
+        "hp": 20,
+        "maxHP": 20
+    },
+
+    "levels":
+    [
+        {
+            "name": "The Crossroads",
+            "width": 5,
+            "height": 5,
+        
+            "spawnPosition": { "x": 2, "y": 3 },
+            "objects":
+            {
+                "2,1": "H"
+            }
+        }
+    ],
+
+    "actors":
+    [
+        {
+            "character": "H",
+            "displayName": "Old Man Charlie",
+            
+            "hp": 7,
+            "maxHP": 7,
+        
+            "encounter":
+            {
+                "message": "Hi! I am Old Man Charlie, what brings you to the crossroads?",
+                "responses": 
+                {
+                    "I am here for treasure!": 
+                    {
+                        "message": "Then head south, there is a vault of treasure there! Beware, it is protected by guards!"
+                    },
+                    "I am here for a gear!": 
+                    {
+                        "message": "Then head west, I hear there is gear somewhere in the woods there. Most treasure is locked up, make sure you have a key!"
+                    },
+                    "I am here for a fight!":
+                    {
+                        "message": "Then head east, there are plenty of fights to be had! Some may even have keys to locked boxes in the west..."
+                    },
+                    "I am here for healing!": 
+                    {
+                        "message": "Head north for healing, there river there will give you a chance to rest and heal"
+                    }
+                }
+            }
+        }
+    ]
+}

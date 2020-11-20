@@ -8,22 +8,21 @@ namespace Adventure
     {
         static void Main(string[] args)
         {
-            Player player = JsonSerializer.Deserialize<Player>(File.ReadAllText("data/player.json"));
-            IMenu introMenu   = new TextFileMenu("screens/intro.txt");
-            IMenu controlMenu = new TextFileMenu("screens/controls.txt");
-            IMenu keyMenu     = new TextFileMenu("screens/key.txt");
+            World world = JsonSerializer.Deserialize<World>(File.ReadAllText("data/world.json"));
+            TextFileEvent introMenu   = new TextFileEvent("screens/intro.txt");
+            TextFileEvent controlMenu = new TextFileEvent("screens/controls.txt");
+            TextFileEvent keyMenu     = new TextFileEvent("screens/key.txt");
+            introMenu.Run();
 
-            introMenu.ShowMenu();
+            Level level = world.levels[0];
+            level.Initilize(world.player);
 
-            Level crossroads = JsonSerializer.Deserialize<Level>(File.ReadAllText("data/levels/crossroads.json"));
-            crossroads.Initilize(player);
-            
             bool done = false;
             while (!done)
             {
                 Console.Clear();
-                Console.WriteLine(crossroads.name);
-                Console.WriteLine(crossroads);
+                Console.WriteLine(level.name);
+                Console.WriteLine(level);
 
                 string input = Console.ReadLine().ToLower();
                 switch (input)
@@ -31,19 +30,19 @@ namespace Adventure
                     // movment
                     case "up":
                     case "u":
-                        crossroads.MovePlayer(new LevelPosition(0, -1));
+                        level.MovePlayer(new LevelPosition(0, -1));
                         break;
                     case "down":
                     case "d":
-                        crossroads.MovePlayer(new LevelPosition(0, 1));
+                        level.MovePlayer(new LevelPosition(0, 1));
                         break;
                     case "left":
                     case "l":
-                        crossroads.MovePlayer(new LevelPosition(-1, 0));
+                        level.MovePlayer(new LevelPosition(-1, 0));
                         break;
                     case "right":
                     case "r":
-                        crossroads.MovePlayer(new LevelPosition(1, 0));
+                        level.MovePlayer(new LevelPosition(1, 0));
                         break;
 
                     // menus
@@ -51,10 +50,10 @@ namespace Adventure
                         done = true;
                         break;
                     case "help":
-                        controlMenu.ShowMenu();
+                        controlMenu.Run();
                         break;
                     case "key":
-                        keyMenu.ShowMenu();
+                        keyMenu.Run();
                         break;
                 }
             }

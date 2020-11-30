@@ -13,7 +13,7 @@ namespace Adventure
 
         public override string ToString()
         {
-            return $"---\n{name}\nhp:{hp}\n---";
+            return $"---\n{Name}\nhp:{Hp}\n---";
         }
     }
 }

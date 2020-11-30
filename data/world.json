@@ -1,11 +1,11 @@
 {
     "player":
     {
-        "character": "@",
-        "name": "Player",
+        "Character": "@",
+        "Name": "Player",
         
-        "hp": 20,
-        "maxHP": 20
+        "Hp": 20,
+        "MaxHP": 20
     },
 
     "levels":

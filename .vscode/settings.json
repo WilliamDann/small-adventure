@@ -9,5 +9,6 @@
     "files.exclude": {
         "bin": true,
         "obj": true
-    }
+    },
+    "cmake.configureOnOpen": false
 }

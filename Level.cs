@@ -15,21 +15,12 @@ namespace Adventure
 
         public Dictionary<string, Actor> actors { get; set; }
 
-        // local data
-        World world;
-
         public Level()
         {
             this.actors = new Dictionary<string, Actor>();
         }
 
-        public void Initilize(World world)
-        {
-            this.world = world;
-            world.player.SetPosition(spawnPosition);
-        }
-
-        public bool PositionOnMap(LevelPosition pos)
+        public bool PositionIsOnMap(LevelPosition pos)
         {
             if (0 > pos.y || map.Length-1 < pos.y)
                 return false;
@@ -41,74 +32,23 @@ namespace Adventure
 
         public string GetCharAt(LevelPosition pos)
         {
-            if (!PositionOnMap(pos)) return null;
+            if (!PositionIsOnMap(pos)) return null;
 
             return map[pos.y].ToCharArray()[pos.x].ToString();
         }
 
         public void SetCharAt(char character, LevelPosition pos)
         {
-            if (!PositionOnMap(pos)) return;
+            if (!PositionIsOnMap(pos)) return;
 
             for (int y = 0; y < map.Length; y++)
             {
-                if (y == world.player.position.y)
+                if (y == pos.y)
                 {
                     char[] row = map[y].ToCharArray();
-                    row[world.player.position.x] = character;
+                    row[pos.x] = character;
+                    map[y] = new string(row);
                 }
-            }
-        }
-
-        public void MovePlayer(LevelPosition distance)
-        {
-            LevelPosition newPos = new LevelPosition(
-                world.player.position.x + distance.x,
-                world.player.position.y + distance.y
-            );
-            if (!PositionOnMap(newPos))
-            {
-                // south
-                if (newPos.y >= map.Length)
-                {
-                    if (surroundingLevels[2] != null)
-                        world.LoadLevel(surroundingLevels[2]);
-                }
-
-                // north
-                else if (newPos.y < 0)
-                {
-                    if (surroundingLevels[0] != null)
-                        world.LoadLevel(surroundingLevels[0]);
-                }
-
-                // west
-                else if (newPos.x < 0)
-                {
-                    if (surroundingLevels[3] != null)
-                        world.LoadLevel(surroundingLevels[3]);
-                }
-
-                // east
-                else if (newPos.x >= map[newPos.y].Length)
-                {
-                    if (surroundingLevels[1] != null)
-                        world.LoadLevel(surroundingLevels[1]);
-                }
-
-                return;
-            }
-
-            string ground = GetCharAt(newPos);
-            if (ground == "_" || ground == "=")
-            {
-                world.player.SetPosition(newPos);
-            }
-            else if (actors.ContainsKey(ground))
-            {
-                Actor interact = actors[ground];
-                if (interact.encounter != null)
-                    interact.encounter.Run();
             }
         }
 
@@ -120,10 +60,7 @@ namespace Adventure
             {
                 for (int x = 0; x < map[y].Length; x++)
                 {
-                    if (world.player.position.y == y && world.player.position.x == x)
-                        display += $" {world.player.character} ";
-                    else 
-                        display += $" {map[y][x]} ";
+                    display += $" {map[y][x]} ";
                 }
                 display += "\n";
             }

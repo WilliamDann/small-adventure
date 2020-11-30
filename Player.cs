@@ -11,9 +11,5 @@ namespace Adventure
             this.position = position;
         }
 
-        public override string ToString()
-        {
-            return $"---\n{Name}\nhp:{Hp}\n---";
-        }
     }
 }

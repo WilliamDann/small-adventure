@@ -5,7 +5,26 @@
         "Name": "Player",
         
         "Hp": 20,
-        "MaxHp": 20
+        "MaxHp": 20,
+
+        "Weapon":
+        {
+            "Name": "Dagger",
+            "Attack": 3
+        },
+        "Armor":
+        {
+            "Name": "Leather Armor",
+            "Defence": 4
+        },
+
+        "Inventory":
+        [
+            {
+                "Name": "Rabbit's Foot",
+                "Value": 2
+            }
+        ]
     },
 
     "Levels":
@@ -87,7 +106,7 @@
                                 "Effect": 
                                 {
                                     "Target": "Player",
-                                    "Function": "Heal",
+                                    "Function": "ModifyHp",
                                     "Amount": 10
                                 }
                             }

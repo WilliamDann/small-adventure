@@ -19,7 +19,7 @@ namespace Adventure
                 return null;
         }
 
-        public void Apply(World context)
+        public void Apply(World context, int? forceAmount=null)
         {
             Actor target = DetermineTarget(context);
             if (target == null)
@@ -31,12 +31,19 @@ namespace Adventure
             
             try
             {
-                method.Invoke(target, new object[]{ Amount });
+                int arg = (forceAmount != null) ? (int)forceAmount : Amount;
+
+                method.Invoke(target, new object[]{ arg });
             }
             catch (ArgumentException)
             {
                 throw new EffectFailedException($"{Function} is not a supported effect");
             }
+        }
+
+        public void Revoke(World context)
+        {
+            Apply(context, forceAmount: -Amount);
         }
     }
 

@@ -9,14 +9,14 @@ namespace Adventure
         static void Main(string[] args)
         {
             World world = JsonSerializer.Deserialize<World>(File.ReadAllText("data/world.json"));
-            TextFileEvent introMenu   = new TextFileEvent("screens/intro.txt");
-            TextFileEvent controlMenu = new TextFileEvent("screens/controls.txt");
-            TextFileEvent keyMenu     = new TextFileEvent("screens/key.txt");
+            FileEncounter introMenu   = new FileEncounter("screens/intro.txt");
+            FileEncounter controlMenu = new FileEncounter("screens/controls.txt");
+            FileEncounter keyMenu     = new FileEncounter("screens/key.txt");
             introMenu.Run();
 
             Console.Clear();
             Console.WriteLine("What is your name?");
-            world.player.name = Console.ReadLine();
+            world.Player.Name = Console.ReadLine();
 
             world.LoadLevel("The Crossroads");
 
@@ -24,9 +24,9 @@ namespace Adventure
             while (!done)
             {
                 Console.Clear();
-                Console.WriteLine(world.CurrentLevel.name);
-                Console.WriteLine(world.CurrentLevel);
-                Console.WriteLine(world.player);
+                Console.WriteLine(world.CurrentLevel.Name);
+                Console.WriteLine(world.GetMapDisplay());
+                Console.WriteLine(world.Player);
 
                 string input = Console.ReadLine().ToLower();
                 switch (input)
@@ -34,19 +34,19 @@ namespace Adventure
                     // movment
                     case "up":
                     case "u":
-                        world.CurrentLevel.MovePlayer(new LevelPosition(0, -1));
+                        world.MovePlayer(new LevelPosition(0, -1));
                         break;
                     case "down":
                     case "d":
-                        world.CurrentLevel.MovePlayer(new LevelPosition(0, 1));
+                        world.MovePlayer(new LevelPosition(0, 1));
                         break;
                     case "left":
                     case "l":
-                        world.CurrentLevel.MovePlayer(new LevelPosition(-1, 0));
+                        world.MovePlayer(new LevelPosition(-1, 0));
                         break;
                     case "right":
                     case "r":
-                        world.CurrentLevel.MovePlayer(new LevelPosition(1, 0));
+                        world.MovePlayer(new LevelPosition(1, 0));
                         break;
 
                     // menus

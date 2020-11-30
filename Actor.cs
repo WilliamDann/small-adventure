@@ -6,66 +6,24 @@ namespace Adventure
 {
     public class Actor
     {
-        public int hp           { get; set; }
-        public int maxHP        { get; set; }
-        public string name      { get; set; }
+        public int Hp           { get; set; }
+        public int MaxHp        { get; set; }
+        public string Name      { get; set; }
 
-        public string character { get; set; }
+        public string Character { get; set; }
 
-        public TextEncounter encounter { get; set; }
-    }
+        public Encounter Encounter { get; set; }
 
-    public class TextEncounter : Event
-    {
-        public Dictionary<string, TextEncounter> responses { get; set; }
-        public string runnableString { get; set; }
-
-        public TextEncounter() { }
-        public TextEncounter(string message): base(message) { }
-
-        public override void Run()
+        public void Heal(int amount)
         {
-            Console.Clear();
-            Console.WriteLine(message);
-            if (responses == null)
-            {
-                Console.WriteLine("Press any key to continue...");
-                Console.ReadKey();
-                return;
-            }
+            this.Hp += amount;
+            if (Hp > MaxHp)
+                Hp = MaxHp;
+        }
 
-            Dictionary<string, TextEncounter> responsesCopy = new Dictionary<string, TextEncounter>(responses);
-            responsesCopy.Add("Quit", new TextEncounter("You left"));
-
-            List<string> numbered = new List<String>();
-            foreach(string response in responsesCopy.Keys)
-            {
-                Console.WriteLine($"{numbered.Count}: {response}");
-                numbered.Add(response);
-            }
-            Console.WriteLine("Enter the number of your response:");
-            
-            TextEncounter newEncounter = null;
-            try
-            {
-                int choice = int.Parse(Console.ReadLine());
-                newEncounter = responsesCopy[numbered[choice]];
-            } catch (FormatException)
-            {
-                Console.WriteLine("Huh? I dont understand that");
-                Console.ReadKey();
-                return;
-            } catch (ArgumentOutOfRangeException)
-            {
-                Console.WriteLine("Huh? I dont understand that");
-                Console.ReadKey();
-                return;
-            }
-
-            if (newEncounter.message != null)
-                newEncounter.Run();
-            else
-                Console.ReadKey();
+        public void Hurt(int amount)
+        {
+            this.Hp -= amount;
         }
     }
 }

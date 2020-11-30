@@ -9,10 +9,8 @@ namespace Adventure
         static void Main(string[] args)
         {
             World world = JsonSerializer.Deserialize<World>(File.ReadAllText("data/world.json"));
-            FileEncounter introMenu   = new FileEncounter("screens/intro.txt");
             FileEncounter controlMenu = new FileEncounter("screens/controls.txt");
             FileEncounter keyMenu     = new FileEncounter("screens/key.txt");
-            introMenu.Run();
 
             Console.Clear();
             Console.WriteLine("What is your name?");
@@ -60,6 +58,8 @@ namespace Adventure
                         keyMenu.Run();
                         break;
                 }
+
+                world.CurrentLevel.RemoveDeadActors();
             }
         }
     }

@@ -1,7 +1,0 @@
-Welcome to Heist!
-
-You have gained some information that there is a very valuable treasure hidden inside a castle nearby! Your informatant told you the castle was 30 paces south of your current position. 
-
-Happy Heisting!
-
-For help, input the 'help' command.

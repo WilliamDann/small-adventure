@@ -20,6 +20,24 @@ namespace Adventure
             this.Actors = new Dictionary<string, Actor>();
         }
 
+        public void RemoveDeadActors()
+        {
+            foreach (string key in Actors.Keys)
+            {
+                if (Actors[key].Hp <= 0)
+                {
+                    for (int y = 0; y < Map.Length; y++)
+                        for (int x = 0; x < Map[y].Length; x++)
+                            if (Map[y][x] == Actors[key].Character[0])
+                            {
+                                char[] row = Map[y].ToCharArray();
+                                row[x] = '_';
+                                Map[y] = new string(row);
+                            }
+                }
+            }
+        }
+
         public bool PositionIsOnMap(LevelPosition pos)
         {
             if (0 > pos.Y || Map.Length-1 < pos.Y)

@@ -69,7 +69,6 @@ namespace Adventure
             int? option = null;
             while (option == null)
             {
-                Console.Clear();
                 ListOptions();
                 option = ChooseOption();
             }
@@ -87,7 +86,7 @@ namespace Adventure
                 Message  = File.ReadAllText(path);
             } catch (IOException)
             {
-                Message = "File Encounter load failed!";
+                Message = $"Failed to load file {path}!";
             }
         }
 

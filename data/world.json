@@ -32,7 +32,7 @@
         "The Crossroads" : {
             "Name": "The Crossroads",
             "SpawnPosition": { "X": 2, "Y": 3 },
-            "SurroundingLevels": ["The River", "The Bridge", null, "The Forest"],
+            "SurroundingLevels": ["The River", "The Bridge", "The Town Gates", "The Forest"],
             "Map":
             [
                 "_____",
@@ -52,7 +52,7 @@
 
                     "Encounter":
                     {
-                        "Message": "You see an old sign post that reads:\n\nNORTH - River\nEAST - Bridge\nSOUTH - Dungeon\nWEST - Forest\n\nAdventure at your own risk..."
+                        "Message": "You see an old sign post that reads:\n\nNORTH - River\nEAST - Bridge\nSOUTH - Town\nWEST - Forest\n\nAdventure at your own risk..."
                     }
                 },
 
@@ -76,14 +76,14 @@
             "SurroundingLevels": [null, null, "The Crossroads", null],
             "Map":
             [
-                "...____",
+                "...__0_",
                 "....___",
                 "__.....",
-                "___....",
+                "0__....",
+                "____0__",
                 "_______",
-                "_______",
-                "_______",
-                "_______"
+                "_0_____",
+                "_____0_"
             ],
             
             "Actors":
@@ -144,6 +144,72 @@
                 "---____0_"
 
             ]
+        },
+        "The Town Gates":
+        {
+            "Name": "The Town Gates",
+            "SpawnPosition": { "X": 2, "Y": 0 },
+            "SurroundingLevels": ["The Crossroads", null, null, null],
+            "Map":
+            [
+                "_____",
+                "_____",
+                "_____",
+                "__h__",
+                "00_00"
+            ],
+            "Actors":
+            {
+                "h":
+                {
+                    "Name": "The Town Guard",
+                    "Hp": 1000,
+                    "MaxHp": 1000,
+                    "Character": "h",
+
+                    "Weapon":
+                    {
+                        "Name": "Guard's Greatsword",
+                        "Damage": 12
+                    },
+                    "Armor":
+                    {
+                        "Name": "Guard's Leather Armor",
+                        "Defence": 4
+                    },
+
+                    "Encounter":
+                    {
+                        "Message": "Hello there stranger. Sorry, but I cannot let a stranger enter the town without proof that you are trustworthy. Bring me the head of the pesky goblin who stole my gold and I will let you in!",
+                        "Options":
+                        [
+                            {
+                                "OptionName": "I have the head!",
+                                "Message": "Very well! You may enter the town",
+                                "Effect": 
+                                {
+                                    "Function" : "ModifyHp",
+                                    "Target" : "h",
+                                    "Amount": -99999
+                                }
+                            }
+                        ]
+                    }
+                },
+
+                "0":
+                {
+                    "Name": "Town Wall",
+                    "Hp": 1000,
+                    "MaxHp": 1000,
+                    "Character": "0",
+
+                    "Encounter":
+                    {
+                        "Message": "The walls on this town seem unbreakable!"
+                    }
+                }
+            }
         }
     }
 }

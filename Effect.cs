@@ -12,9 +12,9 @@ namespace Adventure
         Actor DetermineTarget(World context)
         {
             if (Target == "player")
-                return context.player;
-            else if (context.CurrentLevel.actors.ContainsKey(Target))
-                return context.CurrentLevel.actors[Target];
+                return context.Player;
+            else if (context.CurrentLevel.Actors.ContainsKey(Target))
+                return context.CurrentLevel.Actors[Target];
             else
                 return null;
         }

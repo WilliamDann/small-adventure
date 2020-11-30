@@ -16,7 +16,7 @@ namespace Adventure
 
             Console.Clear();
             Console.WriteLine("What is your name?");
-            world.player.Name = Console.ReadLine();
+            world.Player.Name = Console.ReadLine();
 
             world.LoadLevel("The Crossroads");
 
@@ -24,9 +24,9 @@ namespace Adventure
             while (!done)
             {
                 Console.Clear();
-                Console.WriteLine(world.CurrentLevel.name);
+                Console.WriteLine(world.CurrentLevel.Name);
                 Console.WriteLine(world.GetMapDisplay());
-                Console.WriteLine(world.player);
+                Console.WriteLine(world.Player);
 
                 string input = Console.ReadLine().ToLower();
                 switch (input)

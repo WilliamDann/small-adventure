@@ -1,5 +1,5 @@
 {
-    "player":
+    "Player":
     {
         "Character": "@",
         "Name": "Player",
@@ -8,61 +8,54 @@
         "MaxHP": 20
     },
 
-    "levels":
+    "Levels":
     {
         "The Crossroads" : {
-            "name": "The Crossroads",
-            "spawnPosition": { "x": 2, "y": 3 },
-            "surroundingLevels": ["The River", "The Bridge", null, "The Forest"],
-            "map":
+            "Name": "The Crossroads",
+            "SpawnPosition": { "X": 2, "Y": 3 },
+            "SurroundingLevels": ["The River", "The Bridge", null, "The Forest"],
+            "Map":
             [
                 "_____",
-                "__H__",
+                "__P0_",
+                "0____",
                 "_____",
-                "_____",
-                "_____"
+                "___0_"
             ],
-            "actors":
+            "Actors":
             {
-                "H": 
+                "P":
                 {
-                    "character": "H",
-                    "displayName": "Old Man Charlie",
-                    
-                    "hp": 7,
-                    "maxHP": 7,
-                
-                    "encounter":
+                    "Name": "Old Sign Post",
+                    "Hp": 3,
+                    "MaxHp": 3,
+                    "Character": "P",
+
+                    "Encounter":
                     {
-                        "message": "Hi! I am Old Man Charlie, what brings you to the crossroads?",
-                        "responses": 
-                        {
-                            "I am here for treasure!": 
-                            {
-                                "message": "Then head south, there is a vault of treasure there! Beware, it is protected by guards!"
-                            },
-                            "I am here for a gear!": 
-                            {
-                                "message": "Then head west, I hear there is gear somewhere in the woods there. Most treasure is locked up, make sure you have a key!"
-                            },
-                            "I am here for a fight!":
-                            {
-                                "message": "Then head east, there are plenty of fights to be had! Some may even have keys to locked boxes in the west..."
-                            },
-                            "I am here for healing!": 
-                            {
-                                "message": "Head north for healing, there river there will give you a chance to rest and heal"
-                            }
-                        }
+                        "Message": "You see an old sign post that reads:\n\nNORTH - River\nEAST - Bridge\nSOUTH - Dungeon\nWEST - Forest\n\nAdventure at your own risk..."
+                    }
+                },
+
+                "0":
+                {
+                    "Name": "Oak Tree",
+                    "Hp": 100,
+                    "MaxHp": 100,
+                    "Character": "0",
+
+                    "Encounter":
+                    {
+                        "Message": "You see a strong oak tree ground from the ground."
                     }
                 }
             }
         },
         "The River" : {
-            "name": "The River",
-            "spawnPosition": { "x": 3, "y": 7 },
-            "surroundingLevels": [null, null, "The Crossroads", null],
-            "map":
+            "Name": "The River",
+            "SpawnPosition": { "X": 3, "Y": 7 },
+            "SurroundingLevels": [null, null, "The Crossroads", null],
+            "Map":
             [
                 "...____",
                 "....___",
@@ -72,13 +65,42 @@
                 "_______",
                 "_______",
                 "_______"
-            ]
+            ],
+            
+            "Actors":
+            {
+                ".":
+                {
+                    "Name": "River Water",
+                    "Hp": 1000,
+                    "MaxHp": 1000,
+                    "character": ".",
+
+                    "Encounter":
+                    {
+                        "Message": "You see a running stream, will you drink the water?",
+                        "Options":
+                        [
+                            {
+                                "OptionName": "Drink Water",
+                                "Message": "You feel healed and rested!",
+                                "Effect": 
+                                {
+                                    "Target": "Player",
+                                    "Function": "Heal",
+                                    "Argument": 10
+                                }
+                            }
+                        ]
+                    }
+                }
+            }
         },
         "The Bridge" : {
-            "name": "The Bridge",
-            "spawnPosition": { "x": 0, "y": 4 },
-            "surroundingLevels": [null, null, null, "The Crossroads"],
-            "map":
+            "Name": "The Bridge",
+            "SpawnPosition": { "X": 0, "Y": 4 },
+            "SurroundingLevels": [null, null, null, "The Crossroads"],
+            "Map":
             [
                 ".__0_0___",
                 "...____0_",
@@ -87,34 +109,13 @@
                 "___==____",
                 "___..__0_"
 
-            ],
-            "actors":
-            {
-                ".": 
-                {
-                    "character": ".",
-                    "displayName": "River Water",
-        
-                    "encounter":
-                    {
-                        "message": "In front of you you see a running river. Do you drink from it?",
-                        "responses":
-                        {
-                            "Yes":
-                            {
-                                "message": "You feel healed and rested!",
-                                "runnableString" : "heal player 10"
-                            }
-                        }
-                    }
-                }
-            }
+            ]
         },
         "The Forest" : {
-            "name": "The Forest",
-            "spawnPosition": { "x": 8, "y": 3 },
-            "surroundingLevels": [null, "The Crossroads", null, null],
-            "map":
+            "Name": "The Forest",
+            "SpawnPosition": { "X": 8, "Y": 3 },
+            "SurroundingLevels": [null, "The Crossroads", null, null],
+            "Map":
             [
                 "_0___0_0_",
                 "---_0____",

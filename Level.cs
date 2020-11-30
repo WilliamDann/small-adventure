@@ -13,8 +13,15 @@ namespace Adventure
 
         public LevelPosition spawnPosition { get; set; }
 
+        public Dictionary<string, Actor> actors { get; set; }
+
         // local data
         World world;
+
+        public Level()
+        {
+            this.actors = new Dictionary<string, Actor>();
+        }
 
         public void Initilize(World world)
         {
@@ -97,10 +104,10 @@ namespace Adventure
             {
                 world.player.SetPosition(newPos);
             }
-            else if (world.actors.ContainsKey(ground))
+            else if (actors.ContainsKey(ground))
             {
-                Actor interact = world.actors[ground];
-                if (interact != null)
+                Actor interact = actors[ground];
+                if (interact.encounter != null)
                     interact.encounter.Run();
             }
         }

@@ -7,7 +7,6 @@ namespace Adventure
     {
         public Player player { get; set; }
         
-        public Dictionary<string, Actor> actors { get; set; }
         public Dictionary<string, Level> levels { get; set; }
 
         public Level CurrentLevel { get; private set;}

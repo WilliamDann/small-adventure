@@ -21,7 +21,42 @@
                 "_____",
                 "_____",
                 "_____"
-            ]
+            ],
+            "actors":
+            {
+                "H": 
+                {
+                    "character": "H",
+                    "displayName": "Old Man Charlie",
+                    
+                    "hp": 7,
+                    "maxHP": 7,
+                
+                    "encounter":
+                    {
+                        "message": "Hi! I am Old Man Charlie, what brings you to the crossroads?",
+                        "responses": 
+                        {
+                            "I am here for treasure!": 
+                            {
+                                "message": "Then head south, there is a vault of treasure there! Beware, it is protected by guards!"
+                            },
+                            "I am here for a gear!": 
+                            {
+                                "message": "Then head west, I hear there is gear somewhere in the woods there. Most treasure is locked up, make sure you have a key!"
+                            },
+                            "I am here for a fight!":
+                            {
+                                "message": "Then head east, there are plenty of fights to be had! Some may even have keys to locked boxes in the west..."
+                            },
+                            "I am here for healing!": 
+                            {
+                                "message": "Head north for healing, there river there will give you a chance to rest and heal"
+                            }
+                        }
+                    }
+                }
+            }
         },
         "The River" : {
             "name": "The River",
@@ -52,7 +87,28 @@
                 "___==____",
                 "___..__0_"
 
-            ]
+            ],
+            "actors":
+            {
+                ".": 
+                {
+                    "character": ".",
+                    "displayName": "River Water",
+        
+                    "encounter":
+                    {
+                        "message": "In front of you you see a running river. Do you drink from it?",
+                        "responses":
+                        {
+                            "Yes":
+                            {
+                                "message": "You feel healed and rested!",
+                                "runnableString" : "heal player 10"
+                            }
+                        }
+                    }
+                }
+            }
         },
         "The Forest" : {
             "name": "The Forest",
@@ -61,68 +117,13 @@
             "map":
             [
                 "_0___0_0_",
-                "__0_0____",
-                "C_0___0__",
+                "---_0____",
+                "C_|___0__",
                 "CH_______",
-                "C_0__0___",
-                "__0____0_"
+                "C_|__0___",
+                "---____0_"
 
             ]
-        }
-    },
-
-    "actors":
-    {
-        ".": 
-        {
-            "character": ".",
-            "displayName": "River Water",
-
-            "encounter":
-            {
-                "message": "In front of you you see a running river. Do you drink from it?",
-                "responses":
-                {
-                    "Yes":
-                    {
-                        "message": "You feel healed and rested!",
-                        "runnableString" : "heal player 10"
-                    }
-                }
-            }
-        },
-
-        "H": 
-        {
-            "character": "H",
-            "displayName": "Old Man Charlie",
-            
-            "hp": 7,
-            "maxHP": 7,
-        
-            "encounter":
-            {
-                "message": "Hi! I am Old Man Charlie, what brings you to the crossroads?",
-                "responses": 
-                {
-                    "I am here for treasure!": 
-                    {
-                        "message": "Then head south, there is a vault of treasure there! Beware, it is protected by guards!"
-                    },
-                    "I am here for a gear!": 
-                    {
-                        "message": "Then head west, I hear there is gear somewhere in the woods there. Most treasure is locked up, make sure you have a key!"
-                    },
-                    "I am here for a fight!":
-                    {
-                        "message": "Then head east, there are plenty of fights to be had! Some may even have keys to locked boxes in the west..."
-                    },
-                    "I am here for healing!": 
-                    {
-                        "message": "Head north for healing, there river there will give you a chance to rest and heal"
-                    }
-                }
-            }
         }
     }
 }

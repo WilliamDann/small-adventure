@@ -5,7 +5,7 @@
         "Name": "Player",
         
         "Hp": 20,
-        "MaxHP": 20
+        "MaxHp": 20
     },
 
     "Levels":
@@ -88,7 +88,7 @@
                                 {
                                     "Target": "Player",
                                     "Function": "Heal",
-                                    "Argument": 10
+                                    "Amount": 10
                                 }
                             }
                         ]

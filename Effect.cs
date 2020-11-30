@@ -7,11 +7,11 @@ namespace Adventure
     {
         public string  Function { get; set; }
         public string  Target   { get; set; }
-        public dynamic Argument   { get; set; }
+        public int     Amount   { get; set; }
 
         Actor DetermineTarget(World context)
         {
-            if (Target == "player")
+            if (Target == "Player")
                 return context.Player;
             else if (context.CurrentLevel.Actors.ContainsKey(Target))
                 return context.CurrentLevel.Actors[Target];
@@ -31,7 +31,7 @@ namespace Adventure
             
             try
             {
-                method.Invoke(target, new object[]{ Argument });
+                method.Invoke(target, new object[]{ Amount });
             }
             catch (ArgumentException)
             {

@@ -28,10 +28,13 @@ namespace Adventure
 
             if (!CurrentLevel.PositionIsOnMap(newPos))
             {
-                bool up   = newPos.Y < 0;
-                bool right = newPos.X < 0;
-                bool down = newPos.Y >  CurrentLevel.Map.Length;
-                bool left = newPos.X >= CurrentLevel.Map[newPos.Y].Length;
+                bool up    = newPos.Y < 0;
+                bool left = newPos.X < 0;
+                bool down  = newPos.Y >= CurrentLevel.Map.Length;
+
+                bool right  = false;
+                if (!up && !down)
+                    right = newPos.X >= CurrentLevel.Map[newPos.Y].Length;
 
                 if (up && CurrentLevel.SurroundingLevels[0] != null)
                     LoadLevel(CurrentLevel.SurroundingLevels[0]);

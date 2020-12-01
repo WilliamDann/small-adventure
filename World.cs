@@ -106,7 +106,7 @@ namespace Adventure
             string[] map = new string[rows];
             for (int i = 0; i < rows; i++)
             {
-                map[i] = Levels[Player.Position.Level].Map[i];
+                map[i] = level.Map[i];
             }
             return map;
         }

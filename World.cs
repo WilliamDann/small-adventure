@@ -2,6 +2,14 @@ using System.Collections.Generic;
 
 namespace Adventure
 {
+    public enum Direction
+    {
+        North,
+        East,
+        South,
+        West
+    }
+
     public class World
     {
         public Dictionary<string, Level> Levels { get; set; }
@@ -26,16 +34,16 @@ namespace Adventure
             }
             else
             {
-                int? outDirection = Levels[newPos.Level].FindDirectionOutOfMap(new Position(newPos.X, newPos.Y));
-                string newLevel   = Levels[newPos.Level].GetLevelInDirection((int)outDirection);
+                Direction outDirection = (Direction)Levels[newPos.Level].FindDirectionOutOfMap(new Position(newPos.X, newPos.Y));
 
+                string newLevel = Levels[newPos.Level].GetLevelNameInDirection(outDirection);
                 if (newLevel == null)
                 {
                     return;
                 }
 
                 newPos = new WorldPosition(
-                    FindNewLevelPosition(newPos, Levels[newLevel], (int)outDirection),
+                    FindNewLevelPosition(newPos, Levels[newLevel], outDirection),
                     newLevel
                 );
 
@@ -110,7 +118,7 @@ namespace Adventure
             return map;
         }
 
-        Position FindNewLevelPosition(Position currentPos, Level to, int direction)
+        Position FindNewLevelPosition(Position currentPos, Level to, Direction direction)
         {
             Position position = new Position(currentPos.X, currentPos.Y);
             if (position.Y >= to.Map.Length)
@@ -121,16 +129,15 @@ namespace Adventure
             if (position.X >= to.Map[position.Y].Length)
                 position.X = to.Map[position.Y].Length-1;
 
-            if (direction == 0)
+            if (direction == Direction.North)
                 position.Y = to.Map.Length-1;
-            else if (direction == 1)
-                position.X = 0;
-            else if (direction == 2)
+            else if (direction == Direction.South)
                 position.Y = 0;
-            else if (direction == 3)
-            {
+            else if (direction == Direction.East)
+                position.X = 0;
+            else if (direction == Direction.West)
                 position.X = to.Map[position.Y].Length-1;
-            }
+            
             return position;
         }
     }

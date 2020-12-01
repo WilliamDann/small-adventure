@@ -91,10 +91,10 @@
             "SpawnPosition": { "X": 2, "Y": 3 },
             "SurroundingLevels": 
             {
-                "The River": 0,
-                "The Bridge": 1,
-                "The Town Gates": 2,
-                "The Forest" : 3
+                "The River": "North",
+                "The Bridge": "East",
+                "The Town Gates": "South",
+                "The Forest" : "West"
             },
             "Map":
             [
@@ -111,7 +111,7 @@
             "SpawnPosition": { "X": 3, "Y": 7 },
             "SurroundingLevels": 
             {
-                "The Crossroads": 2
+                "The Crossroads": "South"
             },
             "Map":
             [
@@ -131,7 +131,7 @@
             "SpawnPosition": { "X": 0, "Y": 4 },
             "SurroundingLevels": 
             {
-                "The Crossroads": 3
+                "The Crossroads": "West"
             },
             "Map":
             [
@@ -150,7 +150,7 @@
             "SpawnPosition": { "X": 8, "Y": 3 },
             "SurroundingLevels":
             {
-                "The Crossroads": 1
+                "The Crossroads": "East"
             },
             "Map":
             [
@@ -170,7 +170,7 @@
             "SpawnPosition": { "X": 2, "Y": 0 },
             "SurroundingLevels": 
             {
-                "The Crossroads": 0
+                "The Crossroads": "North"
             },
             "Map":
             [

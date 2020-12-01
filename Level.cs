@@ -8,10 +8,7 @@ namespace Adventure
         public string   Name { get; set; }
         public string[] Map  { get; set; }
 
-        // because System.Text.Json does not support enums in 3.x
-        //  int is being used for direction -_____-
-        // N=0, E=1, S=2, W=3
-        public Dictionary<string, int> SurroundingLevels { get; set; }
+        public Dictionary<string, Direction> SurroundingLevels { get; set; }
 
         public Position SpawnPosition { get; set; }
 
@@ -26,26 +23,25 @@ namespace Adventure
             return true;
         }
 
-        public int? FindDirectionOutOfMap(Position position)
+        public Direction? FindDirectionOutOfMap(Position position)
         {
             if (position.Y < 0)
-                return 0;
+                return Direction.North;
             if (position.Y >= Map.Length) 
-                return 2;
+                return Direction.South;
             if (position.X >= Map[position.Y].Length) 
-                return 1;
+                return Direction.East;
             if (position.X < 0)
-                return 3;
+                return Direction.West;
 
             return null;
         }
 
-        public string GetLevelInDirection(int direction)
+        public string GetLevelNameInDirection(Direction direction)
         {
             foreach (string level in SurroundingLevels.Keys)
-            {
-                if (SurroundingLevels[level] == direction) return level;
-            }
+                if (SurroundingLevels[level] == direction)
+                    return level;
             return null;
         }
 

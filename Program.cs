@@ -1,6 +1,7 @@
 ﻿using System;
 using System.IO;
 using System.Text.Json;
+using System.Text.Json.Serialization;
 
 namespace Adventure
 {
@@ -8,7 +9,19 @@ namespace Adventure
     {
         static void Main(string[] args)
         {
-            World world = JsonSerializer.Deserialize<World>(File.ReadAllText("data/world.json"));
+            JsonSerializerOptions options = new JsonSerializerOptions
+            {
+                WriteIndented = true,
+                Converters =
+                {
+                    new JsonStringEnumConverter(JsonNamingPolicy.CamelCase)
+                }
+            };
+
+            World world = JsonSerializer.Deserialize<World>(
+                File.ReadAllText("data/world.json"),
+                options
+                );
             // FileEncounter controlMenu = new FileEncounter("screens/controls.txt");
             // FileEncounter keyMenu     = new FileEncounter("screens/key.txt");
 

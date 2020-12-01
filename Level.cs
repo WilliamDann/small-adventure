@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using System;
 namespace Adventure
 {
-    public class Level
+    public class Level: IReferable
     {
         // JSON populated data
         public string   Name { get; set; }

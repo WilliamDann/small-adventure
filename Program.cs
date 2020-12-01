@@ -1,5 +1,7 @@
 ﻿using System;
 using System.IO;
+using System.Collections.Generic;
+
 using System.Text.Json;
 using System.Text.Json.Serialization;
 
@@ -9,19 +11,8 @@ namespace Adventure
     {
         static void Main(string[] args)
         {
-            JsonSerializerOptions options = new JsonSerializerOptions
-            {
-                WriteIndented = true,
-                Converters =
-                {
-                    new JsonStringEnumConverter(JsonNamingPolicy.CamelCase)
-                }
-            };
+            World world = LoadWorld();
 
-            World world = JsonSerializer.Deserialize<World>(
-                File.ReadAllText("data/world.json"),
-                options
-                );
             // FileEncounter controlMenu = new FileEncounter("screens/controls.txt");
             // FileEncounter keyMenu     = new FileEncounter("screens/key.txt");
 
@@ -62,6 +53,11 @@ namespace Adventure
                     case "quit":
                         done = true;
                         break;
+                    case "reload":
+                        world = LoadWorld();
+                        Console.WriteLine("World Reloaded");
+                        Console.ReadKey();
+                        break;
                     case "help":
                         // controlMenu.Run();
                         break;
@@ -70,6 +66,37 @@ namespace Adventure
                         break;
                 }
             }
+        }
+
+        static World LoadWorld()
+        {
+            Dictionary<string, Item> items   = JsonSerializer.Deserialize<Dictionary<string, Item>>(File.ReadAllText("data/items.json"));
+            Dictionary<string, Actor> actors = JsonSerializer.Deserialize<Dictionary<string, Actor>>(File.ReadAllText("data/actors.json"));
+            Dictionary<string, Level> levels = JsonSerializer.Deserialize<Dictionary<string, Level>>(
+                File.ReadAllText("data/levels.json"),
+                new JsonSerializerOptions{ Converters = { new JsonStringEnumConverter(JsonNamingPolicy.CamelCase) } }
+                );
+
+            JsonSerializerOptions options = new JsonSerializerOptions
+            {
+                WriteIndented = true,
+                Converters =
+                {
+                    new ReferenceConverter<Item>(items),
+                    new ReferenceConverter<Actor>(actors),
+                    new ReferenceConverter<Level>(levels)
+                }
+            };
+
+            World world = JsonSerializer.Deserialize<World>(
+                File.ReadAllText("data/world.json"),
+                options
+                );
+            world.Items = items;
+            world.Actors = actors;
+            world.Levels = levels;
+
+            return world;
         }
     }
 }

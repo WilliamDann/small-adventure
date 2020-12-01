@@ -2,7 +2,7 @@ using System;
 
 namespace Adventure
 {
-    public class Item
+    public class Item : IReferable
     {
         public string Name { get; set; }
 

@@ -1,10 +1,11 @@
 using System.Collections.Generic;
 using System;
 using System.Text.Json;
+using System.Text.Json.Serialization;
 
 namespace Adventure
 {
-    public class Actor
+    public class Actor : IReferable
     {
         public WorldPosition Position  { get; set; }
         public string        Character { get; set; }
@@ -33,4 +34,9 @@ namespace Adventure
             return display;
         }
     }
-}
+
+    public class Player : Actor
+    {
+
+    }
+}   

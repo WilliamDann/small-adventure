@@ -1,4 +1,8 @@
 {
+    "RabbitsFoot": {
+        "Name": "Rabbit's Foot",
+        "Value": 2
+    },
     "SilverRing": {
         "Name": "Silver Ring",
         "Value": 100

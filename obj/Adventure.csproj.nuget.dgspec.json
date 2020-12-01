@@ -40,12 +40,6 @@
       },
       "frameworks": {
         "netcoreapp3.1": {
-          "dependencies": {
-            "NLog.Config": {
-              "target": "Package",
-              "version": "[4.7.5, )"
-            }
-          },
           "imports": [
             "net461",
             "net462",

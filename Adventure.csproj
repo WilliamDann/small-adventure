@@ -4,13 +4,4 @@
     <OutputType>Exe</OutputType>
     <TargetFramework>netcoreapp3.1</TargetFramework>
   </PropertyGroup>
-
-  <ItemGroup>
-    <PackageReference Include="NLog.Config" Version="4.7.5" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Update="NLog.config">
-        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-  </ItemGroup>
 </Project>

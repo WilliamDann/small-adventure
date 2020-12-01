@@ -9,7 +9,12 @@
         "Character": "@",
         "Hp": 20,
         "MaxHp": 20,
-        "Inventory": []
+
+        "Weapon": "Dagger",
+        "Armor": "LeatherArmor",
+        "Inventory": [
+            "RabbitsFoot"
+        ]
     },
     "CurrentLevel": "The Crossroads"
 }

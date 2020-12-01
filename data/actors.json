@@ -1,3 +1,35 @@
 {
-    
+    "Town Guard": {
+        "Position": {
+            "X": 2,
+            "Y": 3,
+            "Level": "The Town Gates"
+        },
+        "Name": "Town Guard",
+        "Character": "h",
+        "Hp": 1000,
+        "MaxHp": 1000,
+
+        "Weapon": "GuardsPike",
+        "Armor": "GuardsArmor",
+        "Inventory": [ "RabbitsFoot" ]
+    },
+
+    "Goblin": {
+        "Position": {
+            "X": 7,
+            "Y": 2,
+            "Level": "The Bridge"
+        },
+        "Name": "Pesky Goblin",
+        "Character": "g",
+        "Hp": 12,
+        "MaxHp": 12,
+
+        "Weapon": "RustyAxe",
+        "Armor": "ClothArmor",
+        "Inventory": [
+            "SilverRing"
+        ]
+    }
 }

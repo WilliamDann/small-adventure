@@ -1,12 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "gTG1nkTPK5aEyWtSwCaYATeBM7HTg2hm2d+dQ3VTkXnXn37+ZRr47BizHy6AtaSth/RhQ8AzWNt9Q5V7R02yrA==",
+  "dgSpecHash": "22UFyugeKCmtz4LRRhdNTZvGxR/NEQvqOrDAMaN5oZ0n0RunIokGJz7Ly2EMbjVpnciilgAs+hj42sBQSNTAsQ==",
   "success": true,
   "projectFilePath": "C:\\Users\\William\\Documents\\school\\lwtech\\csd\\csd_228\\Adventure\\Adventure.csproj",
-  "expectedPackageFiles": [
-    "C:\\Users\\William\\.nuget\\packages\\nlog\\4.7.5\\nlog.4.7.5.nupkg.sha512",
-    "C:\\Users\\William\\.nuget\\packages\\nlog.config\\4.7.5\\nlog.config.4.7.5.nupkg.sha512",
-    "C:\\Users\\William\\.nuget\\packages\\nlog.schema\\4.7.5\\nlog.schema.4.7.5.nupkg.sha512"
-  ],
+  "expectedPackageFiles": [],
   "logs": []
 }

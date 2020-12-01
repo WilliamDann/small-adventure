@@ -70,27 +70,46 @@ namespace Adventure
 
         static World LoadWorld()
         {
-            Dictionary<string, Item> items   = JsonSerializer.Deserialize<Dictionary<string, Item>>(File.ReadAllText("data/items.json"));
-            Dictionary<string, Actor> actors = JsonSerializer.Deserialize<Dictionary<string, Actor>>(File.ReadAllText("data/actors.json"));
-            Dictionary<string, Level> levels = JsonSerializer.Deserialize<Dictionary<string, Level>>(
-                File.ReadAllText("data/levels.json"),
-                new JsonSerializerOptions{ Converters = { new JsonStringEnumConverter(JsonNamingPolicy.CamelCase) } }
-                );
+            var items   = JsonSerializer.Deserialize<Dictionary<string, Item>>(
+                File.ReadAllText("data/items.json"),
+                new JsonSerializerOptions { }
+            );
 
-            JsonSerializerOptions options = new JsonSerializerOptions
-            {
-                WriteIndented = true,
-                Converters =
+            var actors = JsonSerializer.Deserialize<Dictionary<string, Actor>>(
+                File.ReadAllText("data/actors.json"),
+                new JsonSerializerOptions 
                 {
-                    new ReferenceConverter<Item>(items),
-                    new ReferenceConverter<Actor>(actors),
-                    new ReferenceConverter<Level>(levels)
+                    Converters = 
+                    {
+                        new ReferenceConverter<Item>(items)
+                    }
                 }
-            };
+            );
+
+            var levels = JsonSerializer.Deserialize<Dictionary<string, Level>>(
+                File.ReadAllText("data/levels.json"),
+                new JsonSerializerOptions 
+                {
+                    Converters = 
+                    {
+                        new JsonStringEnumConverter(JsonNamingPolicy.CamelCase)
+                    }
+                }
+            );
+
 
             World world = JsonSerializer.Deserialize<World>(
                 File.ReadAllText("data/world.json"),
-                options
+                new JsonSerializerOptions
+                {
+                    Converters =
+                    {
+                        new ReferenceConverter<Item>(items),
+                        new ReferenceConverter<Actor>(actors),
+                        new ReferenceConverter<Level>(levels),
+                        new JsonStringEnumConverter(JsonNamingPolicy.CamelCase)
+                    }
+                }
                 );
             world.Items = items;
             world.Actors = actors;

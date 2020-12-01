@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Text.Json.Serialization;
 
 namespace Adventure
 {
@@ -14,7 +15,7 @@ namespace Adventure
     {
         public Dictionary<string, Level> Levels { get; set; }
 
-        public Actor Player { get; set; }
+        public Player Player { get; set; }
 
         public Dictionary<string, Item> Items   { get; set; }
         public Dictionary<string, Actor> Actors { get; set; }

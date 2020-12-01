@@ -1,0 +1,42 @@
+{
+    "SilverRing": {
+        "Name": "Silver Ring",
+        "Value": 100
+    },
+    "ClothArmor": {
+        "Name": "Cloth Armor",
+        "Defence": 1
+    },
+    "LeatherArmor": {
+        "Name": "Leather Armor",
+        "Defence": 4
+    },
+    "ChainMailArmor": {
+        "Name": "Chain Mail Armor",
+        "Defence": 8
+    },
+    "GuardsArmor": {
+        "Name": "Guard's Armor",
+        "Defence": 100
+    },
+    "Hands": {
+        "Name": "Bare Hands",
+        "Attack": 1
+    },
+    "Dagger": {
+        "Name": "Dagger",
+        "Attack": 4
+    },
+    "RustyAxe": {
+        "Name": "RustyAxe",
+        "Attack": 5
+    },
+    "LongSword": {
+        "Name": "Longsword",
+        "Attack": 8
+    },
+    "GuardsPike": {
+        "Name": "GuardsPike",
+        "Attack": 10
+    }
+}

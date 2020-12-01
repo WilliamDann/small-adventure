@@ -1,215 +1,185 @@
 {
     "Player":
     {
-        "Character": "@",
+        "Position":
+        {
+            "X": 2,
+            "Y": 3,
+            "Level": "The Crossroads"
+        },
         "Name": "Player",
-        
+        "Character": "@",
+
         "Hp": 20,
         "MaxHp": 20,
 
-        "Weapon":
+        "Inventory":
+        [
+
+        ]
+    },
+
+    "Items":
+    {
+        "SilverRing":
         {
-            "Name": "Dagger",
-            "Attack": 3
+            "Name": "Silver Ring",
+            "Value": 100
         },
-        "Armor":
+
+        "ClothArmor":
+        {
+            "Name": "Cloth Armor",
+            "Defence": 1
+        },
+        "LeatherArmor":
         {
             "Name": "Leather Armor",
             "Defence": 4
         },
+        "ChainMailArmor":
+        {
+            "Name": "Chain Mail Armor",
+            "Defence": 8
+        },
+        "GuardsArmor":
+        {
+            "Name": "Guard's Armor",
+            "Defence": 100
+        },
 
-        "Inventory":
-        [
-            {
-                "Name": "Rabbit's Foot",
-                "Value": 2
-            }
-        ]
+        "Hands":
+        {
+            "Name": "Bare Hands",
+            "Attack": 1
+        },
+        "Dagger":
+        {
+            "Name": "Dagger",
+            "Attack": 4
+        },
+        "RustyAxe":
+        {
+            "Name": "RustyAxe",
+            "Attack": 5
+        },
+        "LongSword":
+        {
+            "Name": "Longsword",
+            "Attack": 8
+        },
+        "GuardsPike":
+        {
+            "Name": "GuardsPike",
+            "Attack": 10
+        }
     },
 
+
+    "Actors":
+    {
+
+    },
+
+    "CurrentLevel": "The Crossroads",
+    
     "Levels":
     {
-        "The Crossroads" : {
+        "The Crossroads" :
+        {
             "Name": "The Crossroads",
             "SpawnPosition": { "X": 2, "Y": 3 },
-            "SurroundingLevels": ["The River", "The Bridge", "The Town Gates", "The Forest"],
+            "SurroundingLevels": 
+            {
+                "The River": 0,
+                "The Bridge": 1,
+                "The Town Gates": 2,
+                "The Forest" : 3
+            },
             "Map":
             [
-                "_____",
-                "__P0_",
-                "0____",
-                "_____",
-                "___0_"
-            ],
-            "Actors":
-            {
-                "P":
-                {
-                    "Name": "Old Sign Post",
-                    "Hp": 3,
-                    "MaxHp": 3,
-                    "Character": "P",
-
-                    "Encounter":
-                    {
-                        "Message": "You see an old sign post that reads:\n\nNORTH - River\nEAST - Bridge\nSOUTH - Town\nWEST - Forest\n\nAdventure at your own risk..."
-                    }
-                },
-
-                "0":
-                {
-                    "Name": "Oak Tree",
-                    "Hp": 100,
-                    "MaxHp": 100,
-                    "Character": "0",
-
-                    "Encounter":
-                    {
-                        "Message": "You see a strong oak tree ground from the ground."
-                    }
-                }
-            }
+                ".,.,.",
+                "..,0.",
+                "0,.,.",
+                ",.,.,",
+                ",.,0."
+            ]
         },
-        "The River" : {
+        "The River" : 
+        {
             "Name": "The River",
             "SpawnPosition": { "X": 3, "Y": 7 },
-            "SurroundingLevels": [null, null, "The Crossroads", null],
+            "SurroundingLevels": 
+            {
+                "The Crossroads": 2
+            },
             "Map":
             [
-                "...__0_",
-                "....___",
-                "__.....",
-                "0__....",
-                "____0__",
-                "_______",
-                "_0_____",
-                "_____0_"
-            ],
-            
-            "Actors":
-            {
-                ".":
-                {
-                    "Name": "River Water",
-                    "Hp": 1000,
-                    "MaxHp": 1000,
-                    "character": ".",
-
-                    "Encounter":
-                    {
-                        "Message": "You see a running stream, will you drink the water?",
-                        "Options":
-                        [
-                            {
-                                "OptionName": "Drink Water",
-                                "Message": "You feel healed and rested!",
-                                "Effect": 
-                                {
-                                    "Target": "Player",
-                                    "Function": "ModifyHp",
-                                    "Amount": 10
-                                }
-                            }
-                        ]
-                    }
-                }
-            }
+                "~~~.,0.",
+                "~~~~.,,",
+                ",.~~~~~",
+                "0,.~~~~",
+                "..,.0,.",
+                ".,.,...",
+                ",0,.,,.",
+                "..,..0."
+            ]
         },
-        "The Bridge" : {
+        "The Bridge" : 
+        {
             "Name": "The Bridge",
             "SpawnPosition": { "X": 0, "Y": 4 },
-            "SurroundingLevels": [null, null, null, "The Crossroads"],
+            "SurroundingLevels": 
+            {
+                "The Crossroads": 3
+            },
             "Map":
             [
-                ".__0_0___",
-                "...____0_",
-                "_....0___",
-                "_0_..____",
-                "___==____",
-                "___..__0_"
+                "~~.0,0.,.",
+                "~~~~.,,0.",
+                ",.~~~~.,.",
+                ".0..~~,.,",
+                ".,.====..",
+                "...,~~.0."
 
             ]
         },
-        "The Forest" : {
+        "The Forest" : 
+        {
             "Name": "The Forest",
             "SpawnPosition": { "X": 8, "Y": 3 },
-            "SurroundingLevels": [null, "The Crossroads", null, null],
+            "SurroundingLevels":
+            {
+                "The Crossroads": 1
+            },
             "Map":
             [
-                "_0___0_0_",
-                "---_0____",
-                "C_|___0__",
-                "CH_______",
-                "C_|__0___",
-                "---____0_"
-
+                "..,....0,",
+                ".0.0.0.,.",
+                "0...,.,0.",
+                "..0,.,.,.",
+                ".,.0.,0.,",
+                ".0,.,..0.",
+                ".,0.,0...",
+                ".,.0.,0.,"
             ]
         },
         "The Town Gates":
         {
             "Name": "The Town Gates",
             "SpawnPosition": { "X": 2, "Y": 0 },
-            "SurroundingLevels": ["The Crossroads", null, null, null],
+            "SurroundingLevels": 
+            {
+                "The Crossroads": 0
+            },
             "Map":
             [
-                "_____",
-                "_____",
-                "_____",
-                "__h__",
+                ".,.,,",
+                "..,..",
+                ",..,.",
+                "..h,.",
                 "00_00"
-            ],
-            "Actors":
-            {
-                "h":
-                {
-                    "Name": "The Town Guard",
-                    "Hp": 1000,
-                    "MaxHp": 1000,
-                    "Character": "h",
-
-                    "Weapon":
-                    {
-                        "Name": "Guard's Greatsword",
-                        "Damage": 12
-                    },
-                    "Armor":
-                    {
-                        "Name": "Guard's Leather Armor",
-                        "Defence": 4
-                    },
-
-                    "Encounter":
-                    {
-                        "Message": "Hello there stranger. Sorry, but I cannot let a stranger enter the town without proof that you are trustworthy. Bring me the head of the pesky goblin who stole my gold and I will let you in!",
-                        "Options":
-                        [
-                            {
-                                "OptionName": "I have the head!",
-                                "Message": "Very well! You may enter the town",
-                                "Effect": 
-                                {
-                                    "Function" : "ModifyHp",
-                                    "Target" : "h",
-                                    "Amount": -99999
-                                }
-                            }
-                        ]
-                    }
-                },
-
-                "0":
-                {
-                    "Name": "Town Wall",
-                    "Hp": 1000,
-                    "MaxHp": 1000,
-                    "Character": "0",
-
-                    "Encounter":
-                    {
-                        "Message": "The walls on this town seem unbreakable!"
-                    }
-                }
-            }
+            ]
         }
     }
 }

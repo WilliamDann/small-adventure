@@ -8,63 +8,60 @@ namespace Adventure
         public string   Name { get; set; }
         public string[] Map  { get; set; }
 
-        // 0=N, 1=E, 2=S, 3=W
-        public string[] SurroundingLevels { get; set; }
+        // because System.Text.Json does not support enums in 3.x
+        //  int is being used for direction -_____-
+        // N=0, E=1, S=2, W=3
+        public Dictionary<string, int> SurroundingLevels { get; set; }
 
-        public LevelPosition SpawnPosition { get; set; }
+        public Position SpawnPosition { get; set; }
 
-        public Dictionary<string, Actor> Actors { get; set; }
 
-        public Level()
+        public bool PositionIsOnMap(Position position)
         {
-            this.Actors = new Dictionary<string, Actor>();
-        }
-
-        public void RemoveDeadActors()
-        {
-            foreach (string key in Actors.Keys)
-            {
-                if (Actors[key].Hp <= 0)
-                {
-                    for (int y = 0; y < Map.Length; y++)
-                        for (int x = 0; x < Map[y].Length; x++)
-                            if (Map[y][x] == Actors[key].Character[0])
-                            {
-                                char[] row = Map[y].ToCharArray();
-                                row[x] = '_';
-                                Map[y] = new string(row);
-                            }
-                }
-            }
-        }
-
-        public bool PositionIsOnMap(LevelPosition pos)
-        {
-            if (0 > pos.Y || Map.Length-1 < pos.Y)
+            if (0 > position.Y || Map.Length-1 < position.Y)
                 return false;
-            if (0 > pos.X || Map[pos.Y].Length-1 < pos.X)
+            if (0 > position.X || Map[position.Y].Length-1 < position.X)
                 return false;
 
             return true;
         }
 
-        public string GetCharAt(LevelPosition pos)
+        public int? FindDirectionOutOfMap(Position position)
         {
-            if (!PositionIsOnMap(pos)) return null;
+            if (position.Y < 0)
+                return 0;
+            if (position.Y >= Map.Length) 
+                return 2;
+            if (position.X >= Map[position.Y].Length) 
+                return 1;
+            if (position.X < 0)
+                return 3;
 
-            return Map[pos.Y].ToCharArray()[pos.X].ToString();
+            return null;
         }
 
-        public void SetCharAt(char character, LevelPosition pos)
+        public string GetLevelInDirection(int direction)
         {
-            if (!PositionIsOnMap(pos)) return;
+            foreach (string level in SurroundingLevels.Keys)
+            {
+                if (SurroundingLevels[level] == direction) return level;
+            }
+            return null;
+        }
 
+        public char GetCharAt(Position position)
+        {
+            return Map[position.Y][position.X];
+        }
+
+        public void SetCharAt(char character, Position position)
+        {
             for (int y = 0; y < Map.Length; y++)
             {
-                if (y == pos.Y)
+                if (y == position.Y)
                 {
                     char[] row = Map[y].ToCharArray();
-                    row[pos.X] = character;
+                    row[position.X] = character;
                     Map[y] = new string(row);
                 }
             }
@@ -84,24 +81,6 @@ namespace Adventure
             }
 
             return display;
-        }
-    }
-
-    public class LevelPosition
-    {
-        public int X { get; set; }
-        public int Y { get; set; }
-
-        public LevelPosition() { }
-        public LevelPosition(int x, int y)
-        {
-            this.X = x;
-            this.Y = y;
-        }
-
-        public override string ToString()
-        {
-            return $"{X},{Y}";
         }
     }
 }

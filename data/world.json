@@ -1,4 +1,5 @@
 {
+    "WalkableTiles": [ ",", ".", "=" ],
     "Player": {
         "Position": {
             "X": 2,

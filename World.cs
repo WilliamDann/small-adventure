@@ -20,6 +20,8 @@ namespace Adventure
         public Dictionary<string, Item> Items   { get; set; }
         public Dictionary<string, Actor> Actors { get; set; }
 
+        public List<char> WalkableTiles { get; set; }
+
         public void MoveActor(Actor actor, Position distance)
         {
             WorldPosition newPos = new WorldPosition
@@ -31,7 +33,10 @@ namespace Adventure
 
             if (Levels[newPos.Level].PositionIsOnMap(newPos))
             {
-                actor.Position = newPos;
+                char tile = Levels[newPos.Level].GetCharAt(newPos);
+
+                if (WalkableTiles.Contains(tile))
+                    actor.Position = newPos;
             }
             else
             {

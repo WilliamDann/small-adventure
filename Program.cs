@@ -65,6 +65,8 @@ namespace Adventure
                         // keyMenu.Run();
                         break;
                 }
+
+                world.RemoveDead();
             }
         }
 

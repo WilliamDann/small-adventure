@@ -33,5 +33,25 @@
         "Inventory": [
             "SilverRing"
         ]
+    },
+
+    "Locked Chest":
+    {
+        "Position": {
+            "X": 0,
+            "Y": 1,
+            "Level": "The Forest"
+        },
+        "Name": "Locked Chest",
+        "Character": "∩",
+        "Hp": 6,
+        "MaxHp": 6,
+        "Weapon": "None",
+        "Armor": "None",
+        "Inventory": [
+            "ChainMailArmor",
+            "LongSword"
+        ],
+        "Message": "You see an old locked chest that looks breakable"
     }
 }

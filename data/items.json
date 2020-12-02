@@ -1,4 +1,8 @@
 {
+    "None": {
+        "Attack": 0,
+        "Defence": 0
+    },
     "RabbitsFoot": {
         "Name": "Rabbit's Foot",
         "Value": 2

@@ -121,6 +121,13 @@ namespace Adventure
             return display;
         }
 
+        public void RemoveDead()
+        {
+            foreach (string key in Actors.Keys)
+                if (Actors[key].Hp <=0 )
+                    Actors.Remove(key);
+        }
+
         /// helpers
         string[] CopyMap(Level level)
         {

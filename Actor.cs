@@ -30,11 +30,24 @@ namespace Adventure
                 },
                 new List<TextMenu>
                 {
-                    new TextMenu("Fight", (a, b) => {}),
-                    new TextMenu("Leave", (a, b) => {})
+                    new TextMenu("Fight", (self, other) => { Actions.Fight(self, other); }),
+                    new TextMenu("Leave", (self, other) => { Console.WriteLine("You left."); })
                 }
             );
             baseMenu.Run(this, other);
+        }
+
+        public void Attack(Actor other, bool output=true)
+        {
+            int diff =  -Weapon.Attack + other.Armor.Defence;
+            if (diff > 0) diff = 0;
+
+            if (output)
+            {
+                Console.WriteLine($"{Name} attacked {other.Name} with {-diff} damage ({other.Armor.Defence} was defended)");
+            }
+
+            other.Hp += diff;
         }
 
         public override string ToString()

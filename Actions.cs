@@ -1,10 +1,30 @@
 using System;
+using System.Collections.Generic;
+
 using static System.Console;
 
 namespace Adventure
 {
     public class Actions
     {
+        public static T GetListItem<T>(List<T> list)
+        {
+            try
+            {
+                return list[int.Parse(ReadLine())];
+            }
+            catch (FormatException)
+            {
+                WriteLine("Input invalid, please enter an integer");
+                return GetListItem<T>(list);
+            }
+            catch (ArgumentOutOfRangeException)
+            {
+                WriteLine("Please enter a value in the list!");
+                return GetListItem<T>(list);
+            }
+        }
+
         public static bool Confirm(string prompt)
         {
             Write($"{prompt} (y/n): ");
@@ -21,46 +41,126 @@ namespace Adventure
             }
 
         }
-        public static void Fight(Actor first, Actor second, bool output=true)
+
+        public static void ListItems(List<Item> list)
         {
-            bool fighting = true;
-            while (fighting)
+            for (int i = 0; i < list.Count; i++)
+            {
+                WriteLine($"{i}: {list[i]}");
+            }
+        }
+
+        public static void Fight(Actor player, Actor other)
+        {
+            do
             {
                 Console.Clear();
-                WriteLine($"{first}\n\nvs.\n\n{second} ");
+                WriteLine($"{player}\n\nvs.\n\n{other} ");
 
-                first.Attack(second);
-                if (second.Hp <= 0)
+                player.Attack(other);
+                if (other.Hp <= 0)
                 {
-                    foreach (Item item in second.Inventory)
-                        first.Inventory.Add(item);
+                    WriteLine($"{other.Name} has died.");
+                    WriteLine("Loot gained: ");
+                    ListItems(other.Inventory);
+                    foreach (Item item in other.Inventory)
+                        player.Inventory.Add(item);
 
-                    if (output)
-                        WriteLine($"{second.Name} has died.");
-
-                    fighting = false;
+                    break;
                 }
 
-                if (fighting)
-                {
-                    second.Attack(first);
-                    if (first.Hp <= 0)
-                    {
-                        foreach (Item item in first.Inventory)
-                            second.Inventory.Add(item);
-                        if (output)
-                            WriteLine($"{first.Name} has died.");
-                    
-                        fighting = false;
-                    }
 
-                }
-
-                if (fighting && output)
+                other.Attack(player);
+                if (player.Hp <= 0)
                 {
-                    fighting = Confirm("Keep fighting?");
+                    foreach (Item item in player.Inventory)
+                        other.Inventory.Add(item);
+                    WriteLine($"{player.Name} has died.");
+
+                    break;
                 }
+            } while (Confirm("Keep finghting?"));
+        }
+
+        public static void Trade(Actor player, Actor other)
+        {
+            if (!other.Tradable)
+            {
+                WriteLine($"{other.Name} will not trade with you");
+                return;
             }
+
+            List<Item> given = new List<Item>();
+            List<Item> taken = new List<Item>();
+
+            do
+            {
+                Console.Clear();
+                WriteLine("Items Given:");
+                ListItems(given);
+                WriteLine("---");
+
+                WriteLine("Items Taken:");
+                ListItems(taken);
+                WriteLine("---");
+
+                WriteLine("Your items:");
+                ListItems(player.Inventory);
+                WriteLine("---");
+
+                WriteLine($"{other.Name}'s items:");
+                ListItems(other.Inventory);
+                WriteLine("---");
+
+                WriteLine("1. Add item to taken\n2. Add item to given\n3.Finish Trade\n4.Quit");
+                Write("Enter an option: ");
+
+                switch (ReadLine())
+                {
+                    case "1":
+                        Write($"Enter Number from {other.Name}'s Inventory: ");
+
+                        taken.Add(GetListItem<Item>(other.Inventory));
+                        break;
+                    case "2":
+                        Write("Enter Number from Your Inventory: ");
+                        
+                        given.Add(GetListItem<Item>(player.Inventory));
+                        break;
+                    case "3":
+                        int value = 0;
+                        foreach(Item item in taken)
+                            value -= item.Value;
+                        foreach(Item item in given)
+                            value += item.Value;
+
+                        if (value >= 0)
+                        {
+                            WriteLine("It's a deal!");
+                            foreach (Item item in given)
+                            {
+                                player.Inventory.Remove(item);
+                                other.Inventory.Add(item);
+                            }
+                            foreach (Item item in taken)
+                            {
+                                player.Inventory.Add(item);
+                                other.Inventory.Remove(item);
+                            }
+                            given.Clear();
+                            taken.Clear();
+                        }
+                        else
+                        {
+                            WriteLine($"That is a bad trade for me. (value: {value})");
+                        }
+                        break;
+                    case "4":
+                        return;
+                    default:
+                        break;
+                }
+            } while (Confirm("Keep trading?"));
         }
     }
 }

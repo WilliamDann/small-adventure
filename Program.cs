@@ -66,7 +66,7 @@ namespace Adventure
                         break;
                 }
 
-                world.RemoveDead();
+                world.OnTurn();
             }
         }
 

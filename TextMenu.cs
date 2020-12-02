@@ -43,7 +43,7 @@ namespace Adventure
                 Console.WriteLine("That input was not recognized!");
                 return ChooseOption();
             }
-            catch (IndexOutOfRangeException)
+            catch (ArgumentOutOfRangeException)
             {
                 Console.WriteLine("That was not one of the listed options!");
                 return ChooseOption();

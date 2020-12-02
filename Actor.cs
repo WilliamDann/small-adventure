@@ -18,23 +18,12 @@ namespace Adventure
         public Item Weapon          { get; set; }
         public Item Armor           { get; set; }
 
-        public string Message { get; set; }
+        public string Message  { get; set; }
+        public bool   Tradable { get; set; } = true;
 
-        public void Interact(Actor other)
+        public virtual void Interact(Actor other)
         {
-            TextMenu baseMenu = new TextMenu(
-                null,
-                (self, other) => 
-                {
-                    Console.WriteLine(other.Message);
-                },
-                new List<TextMenu>
-                {
-                    new TextMenu("Fight", (self, other) => { Actions.Fight(self, other); }),
-                    new TextMenu("Leave", (self, other) => { Console.WriteLine("You left."); })
-                }
-            );
-            baseMenu.Run(this, other);
+            BuildBaseMenu().Run(this, other);
         }
 
         public void Attack(Actor other, bool output=true)
@@ -48,6 +37,23 @@ namespace Adventure
             }
 
             other.Hp += diff;
+        }
+
+        protected TextMenu BuildBaseMenu()
+        {
+            return new TextMenu(
+                null,
+                (self, other) => 
+                {
+                    Console.WriteLine(other.Message);
+                },
+                new List<TextMenu>
+                {
+                    new TextMenu("Fight", (self, other) => { Actions.Fight(self, other); }),
+                    new TextMenu("Trade", (self, other) => { Actions.Trade(self, other); }),
+                    new TextMenu("Leave", (self, other) => { Console.WriteLine("You left."); })
+                }
+            );
         }
 
         public override string ToString()

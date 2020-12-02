@@ -121,6 +121,19 @@ namespace Adventure
             return display;
         }
 
+        // ran every turn of the game
+        public void OnTurn()
+        {
+            foreach (Item item in Actors["Town Guard"].Inventory)
+                if (item.Name == "Silver Ring")
+                {
+                    MoveActor(Actors["Town Guard"], new Position(1, 0));
+                    Actors["Town Guard"].Message = "Thanks for finding my ring! You can enter the town now";
+                }
+
+            RemoveDead();
+        }
+
         public void RemoveDead()
         {
             foreach (string key in Actors.Keys)

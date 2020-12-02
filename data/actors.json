@@ -14,7 +14,7 @@
         "Armor": "GuardsArmor",
         "Inventory": [ "RabbitsFoot" ],
 
-        "Message": "You must prove you are worthy of entering the town. Kill the goblin who is terrorizing our town and I might let you in."
+        "Message": "You must prove you are worthy of entering the town. Kill the goblin who stole my silver ring and I might find you trustworthy..."
     },
 
     "Goblin": {
@@ -52,6 +52,7 @@
             "ChainMailArmor",
             "LongSword"
         ],
-        "Message": "You see an old locked chest that looks breakable"
+        "Message": "You see an old locked chest that looks breakable",
+        "Tradable": false
     }
 }

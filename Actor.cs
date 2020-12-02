@@ -18,18 +18,23 @@ namespace Adventure
         public Item Weapon          { get; set; }
         public Item Armor           { get; set; }
 
-        public string EncounterMessage { get; set; }
+        public string Message { get; set; }
 
         public void Interact(Actor other)
         {
             TextMenu baseMenu = new TextMenu(
-                EncounterMessage,
+                null,
                 (self, other) => 
                 {
-
+                    Console.WriteLine(other.Message);
                 },
-                null
+                new List<TextMenu>
+                {
+                    new TextMenu("Fight", (a, b) => {}),
+                    new TextMenu("Leave", (a, b) => {})
+                }
             );
+            baseMenu.Run(this, other);
         }
 
         public override string ToString()

@@ -12,7 +12,9 @@
 
         "Weapon": "GuardsPike",
         "Armor": "GuardsArmor",
-        "Inventory": [ "RabbitsFoot" ]
+        "Inventory": [ "RabbitsFoot" ],
+
+        "Message": "You must prove you are worthy of entering the town. Kill the goblin who is terrorizing our town and I might let you in."
     },
 
     "Goblin": {

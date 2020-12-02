@@ -40,7 +40,10 @@ namespace Adventure
 
                 Actor interact = GetActorAtPosition(newPos);
                 if (interact != null)
+                {
+                    Player.Interact(interact);
                     return;
+                }
 
                 actor.Position = newPos;
             }

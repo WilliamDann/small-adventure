@@ -2,6 +2,28 @@ using System;
 
 namespace Adventure
 {
+    public class ItemEffect
+    {
+        public int Heal { get; set; } = 0;
+        public int Hurt { get; set; } = 0;
+
+        public void Apply(Actor actor)
+        {
+            actor.AdjustHp(Heal);
+            actor.AdjustHp(-Hurt);
+        }
+
+        public override string ToString()
+        {
+            string str = "(";
+
+            if (Heal != 0) str += $" Heal: {Heal} ";
+            if (Hurt != 0) str += $" Hurt: {Hurt} ";
+
+            return str + ")";
+        }
+    }
+
     public class Item : IReferable
     {
         public string Name { get; set; }
@@ -14,6 +36,8 @@ namespace Adventure
 
         public int Value { get; set; } = 0;
 
+        public ItemEffect Effect { get; set; }
+
         public override string ToString()
         {
             string display = $"{Name}(";
@@ -24,6 +48,8 @@ namespace Adventure
                 display += $" Attack: {Attack} ";
             if (Value != 0)
                 display += $" Value: {Value} gold ";
+            if (Effect != null)
+                display += $" Effect: {Effect} ";
 
             display += ")";
             return display;

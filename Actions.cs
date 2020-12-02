@@ -93,6 +93,7 @@ namespace Adventure
             List<Item> given = new List<Item>();
             List<Item> taken = new List<Item>();
 
+            bool trading = true;
             do
             {
                 Console.Clear();
@@ -149,10 +150,16 @@ namespace Adventure
                             }
                             given.Clear();
                             taken.Clear();
+                            
+                            WriteLine("Press any key to continue...");
+                            ReadKey();
                         }
                         else
                         {
                             WriteLine($"That is a bad trade for me. (value: {value})");
+                            
+                            WriteLine("Press any key to continue...");
+                            ReadKey();
                         }
                         break;
                     case "4":
@@ -160,7 +167,7 @@ namespace Adventure
                     default:
                         break;
                 }
-            } while (Confirm("Keep trading?"));
+            } while (trading);
         }
     }
 }

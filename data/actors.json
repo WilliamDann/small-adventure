@@ -54,5 +54,21 @@
         ],
         "Message": "You see an old locked chest that looks breakable",
         "Tradable": false
+    },
+
+    "Water Well": {
+        "Position": {
+            "X": 3,
+            "Y": 5,
+            "Level": "The River"
+        },
+        "Name": "Water Well",
+        "Character": "O",
+        "Hp": 10000,
+        "MaxHp": 10000,
+        "Weapon": "None",
+        "Armor": "None",
+        "Inventory": [ "Water" ],
+        "Message": "You see an old well with shimmering water! Try trading with the well to get water."
     }
 }

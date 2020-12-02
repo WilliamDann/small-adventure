@@ -39,6 +39,14 @@ namespace Adventure
             other.Hp += diff;
         }
 
+        public void AdjustHp(int amount)
+        {
+            Hp += amount;
+
+            if (Hp >= MaxHp)
+                Hp = MaxHp;
+        }
+
         protected TextMenu BuildBaseMenu()
         {
             return new TextMenu(

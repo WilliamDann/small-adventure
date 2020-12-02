@@ -3,6 +3,13 @@
         "Attack": 0,
         "Defence": 0
     },
+    "Water": {
+        "Name": "Magical Water",
+        "Effect":
+        {
+            "Heal": 10
+        }
+    },
     "RabbitsFoot": {
         "Name": "Rabbit's Foot",
         "Value": 2

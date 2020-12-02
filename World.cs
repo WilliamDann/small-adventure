@@ -131,6 +131,11 @@ namespace Adventure
                     Actors["Town Guard"].Message = "Thanks for finding my ring! You can enter the town now";
                 }
 
+            if (Actors["Water Well"].Inventory.Count == 0)
+            {
+                Actors["Water Well"].Inventory.Add(Items["Water"]);
+            }
+
             RemoveDead();
         }
 

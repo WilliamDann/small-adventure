@@ -35,8 +35,14 @@ namespace Adventure
             {
                 char tile = Levels[newPos.Level].GetCharAt(newPos);
 
-                if (WalkableTiles.Contains(tile))
-                    actor.Position = newPos;
+                if (!WalkableTiles.Contains(tile))
+                    return;
+
+                Actor interact = GetActorAtPosition(newPos);
+                if (interact != null)
+                    return;
+
+                actor.Position = newPos;
             }
             else
             {
@@ -55,6 +61,14 @@ namespace Adventure
 
                 actor.Position = newPos;
             }
+        }
+
+        public Actor GetActorAtPosition(WorldPosition position)
+        {
+            foreach (string key in Actors.Keys)
+                if (position.X == Actors[key].Position.X && position.Y == Actors[key].Position.Y && position.Level == Actors[key].Position.Level)
+                    return Actors[key];
+            return null;
         }
 
         public void SetCurrentLevel(string level)

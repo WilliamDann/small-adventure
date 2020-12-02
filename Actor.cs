@@ -18,6 +18,20 @@ namespace Adventure
         public Item Weapon          { get; set; }
         public Item Armor           { get; set; }
 
+        public string EncounterMessage { get; set; }
+
+        public void Interact(Actor other)
+        {
+            TextMenu baseMenu = new TextMenu(
+                EncounterMessage,
+                (self, other) => 
+                {
+
+                },
+                null
+            );
+        }
+
         public override string ToString()
         {
             string display = "";

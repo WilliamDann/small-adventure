@@ -1,4 +1,4 @@
-# The Code of SmallAdventure, and What I Learned
+# The Code of SmallAdventure
 
 ![Game Image](img/riverimg.PNG)
 
@@ -24,7 +24,6 @@ This gave me a basic outline of what I wanted:
 
 Everything that exists in the game is contained in the World class.
 
-### Variables
 ![World Variables](img/WorldVars.PNG)
 - Levels are stored in the world as a Dictionary of Level Names to Level Data
 - Items are stored the same way, Item names to Item data
@@ -36,4 +35,15 @@ The reason the Items, Levels, and Actors are stored this way, instead of say a L
 
 instead of keeping track of a whole Level object every time you need to do something with a level, for example.
 
-### Functions
+## The Actor Class
+
+![Actor Variables](img\ActorImg.PNG)
+
+- Movement can result in moving to a new level
+- What happens if two levels are different sizes
+
+- funny story about why hp has a default value
+
+## The Level Class
+
+![Level Variables](img/LevelVars.PNG)

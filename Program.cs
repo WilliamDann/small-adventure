@@ -24,10 +24,10 @@ namespace Adventure
         {
             World world = LoadWorld();
 
-            string introScreen    = LoadFile("screens/intro.txt");
-            string controlsScreen = LoadFile("screens/controls.txt");
-            string keysScreen     = LoadFile("screens/key.txt");
-            string mapScreen      = LoadFile("screens/map.txt");
+            string introScreen    = LoadFile("intro.txt");
+            string controlsScreen = LoadFile("controls.txt");
+            string keysScreen     = LoadFile("key.txt");
+            string mapScreen      = LoadFile("map.txt");
 
             Console.Clear();
             Console.WriteLine("What is your name?");
@@ -109,12 +109,12 @@ namespace Adventure
         static World LoadWorld()
         {
             var items   = JsonSerializer.Deserialize<Dictionary<string, Item>>(
-                File.ReadAllText("data/items.json"),
+                File.ReadAllText("items.json"),
                 new JsonSerializerOptions { }
             );
 
             var actors = JsonSerializer.Deserialize<Dictionary<string, Actor>>(
-                File.ReadAllText("data/actors.json"),
+                File.ReadAllText("actors.json"),
                 new JsonSerializerOptions 
                 {
                     Converters = 
@@ -125,7 +125,7 @@ namespace Adventure
             );
 
             var levels = JsonSerializer.Deserialize<Dictionary<string, Level>>(
-                File.ReadAllText("data/levels.json"),
+                File.ReadAllText("levels.json"),
                 new JsonSerializerOptions 
                 {
                     Converters = 
@@ -137,7 +137,7 @@ namespace Adventure
 
 
             World world = JsonSerializer.Deserialize<World>(
-                File.ReadAllText("data/world.json"),
+                File.ReadAllText("world.json"),
                 new JsonSerializerOptions
                 {
                     Converters =

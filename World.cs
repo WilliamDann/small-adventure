@@ -22,50 +22,12 @@ namespace Adventure
 
         public List<char> WalkableTiles { get; set; }
 
-        public void MoveActor(Actor actor, Position distance)
+
+        public Level GetCurrentLevel()
         {
-            WorldPosition newPos = new WorldPosition
-            (
-                actor.Position.X + distance.X,
-                actor.Position.Y + distance.Y,
-                actor.Position.Level
-            );
-
-            if (Levels[newPos.Level].PositionIsOnMap(newPos))
-            {
-                char tile = Levels[newPos.Level].GetCharAt(newPos);
-
-                if (!WalkableTiles.Contains(tile))
-                    return;
-
-                Actor interact = GetActorAtPosition(newPos);
-                if (interact != null)
-                {
-                    Player.Interact(interact);
-                    return;
-                }
-
-                actor.Position = newPos;
-            }
-            else
-            {
-                Direction outDirection = (Direction)Levels[newPos.Level].FindDirectionOutOfMap(new Position(newPos.X, newPos.Y));
-
-                string newLevel = Levels[newPos.Level].GetLevelNameInDirection(outDirection);
-                if (newLevel == null)
-                {
-                    return;
-                }
-
-                newPos = new WorldPosition(
-                    FindNewLevelPosition(newPos, Levels[newLevel], outDirection),
-                    newLevel
-                );
-
-                actor.Position = newPos;
-            }
+            return Levels[Player.Position.Level];
         }
-
+ 
         public Actor GetActorAtPosition(WorldPosition position)
         {
             foreach (string key in Actors.Keys)
@@ -74,19 +36,6 @@ namespace Adventure
             return null;
         }
 
-        public void SetCurrentLevel(string level)
-        {
-            if (!Levels.ContainsKey(level))
-                throw new KeyNotFoundException($"Level {level} does not exist");
-
-            Player.Position = new WorldPosition(Levels[level].SpawnPosition, level);
-        }
-
-        public Level GetCurrentLevel()
-        {
-            return Levels[Player.Position.Level];
-        }
- 
         public List<Actor> GetActorsInLevel(string level)
         {
             List<Actor> actors = new List<Actor>();
@@ -100,9 +49,10 @@ namespace Adventure
         {
             if (levelName == null)
                 levelName = Player.Position.Level;
+            
             string display = "";
+            string[] map   = CopyMap(Levels[Player.Position.Level]);
 
-            string[] map = CopyMap(Levels[Player.Position.Level]);
             foreach (Actor actor in GetActorsInLevel(levelName))
             {
                 map = PlaceOnMap(map, actor.Character[0], actor.Position);
@@ -127,8 +77,8 @@ namespace Adventure
             foreach (Item item in Actors["Town Guard"].Inventory)
                 if (item.Name == "Silver Ring")
                 {
-                    MoveActor(Actors["Town Guard"], new Position(1, 0));
                     Actors["Town Guard"].Message = "Thanks for finding my ring! You can enter the town now";
+                    Actors["Town Guard"].Move(this, new Position(1, 0));
                 }
 
             if (Actors["Water Well"].Inventory.Count == 0)
@@ -166,7 +116,7 @@ namespace Adventure
             return map;
         }
 
-        Position FindNewLevelPosition(Position currentPos, Level to, Direction direction)
+        public Position FindNewLevelPosition(Position currentPos, Level to, Direction direction)
         {
             Position position = new Position(currentPos.X, currentPos.Y);
             if (position.Y >= to.Map.Length)

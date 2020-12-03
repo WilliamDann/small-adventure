@@ -10,9 +10,6 @@ namespace Adventure
 
         public Dictionary<string, Direction> SurroundingLevels { get; set; }
 
-        public Position SpawnPosition { get; set; }
-
-
         public bool PositionIsOnMap(Position position)
         {
             if (0 > position.Y || Map.Length-1 < position.Y)

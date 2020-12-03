@@ -10,9 +10,6 @@ namespace Adventure
 
         public Dictionary<string, Direction> SurroundingLevels { get; set; }
 
-        public Position SpawnPosition { get; set; }
-
-
         public bool PositionIsOnMap(Position position)
         {
             if (0 > position.Y || Map.Length-1 < position.Y)
@@ -48,19 +45,6 @@ namespace Adventure
         public char GetCharAt(Position position)
         {
             return Map[position.Y][position.X];
-        }
-
-        public void SetCharAt(char character, Position position)
-        {
-            for (int y = 0; y < Map.Length; y++)
-            {
-                if (y == position.Y)
-                {
-                    char[] row = Map[y].ToCharArray();
-                    row[position.X] = character;
-                    Map[y] = new string(row);
-                }
-            }
         }
 
         public override string ToString()

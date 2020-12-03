@@ -42,8 +42,12 @@ instead of keeping track of a whole Level object every time you need to do somet
 - Movement can result in moving to a new level
 - What happens if two levels are different sizes
 
-- funny story about why hp has a default value
+- funny story about why HP has a default value
 
 ## The Level Class
 
 ![Level Variables](img/LevelVars.PNG)
+
+- why System.Text.Json makes me angry sometimes
+
+## The Item Class

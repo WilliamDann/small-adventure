@@ -22,6 +22,12 @@ namespace Adventure
 
         public List<char> WalkableTiles { get; set; }
 
+
+        public Level GetCurrentLevel()
+        {
+            return Levels[Player.Position.Level];
+        }
+ 
         public Actor GetActorAtPosition(WorldPosition position)
         {
             foreach (string key in Actors.Keys)
@@ -30,11 +36,6 @@ namespace Adventure
             return null;
         }
 
-        public Level GetCurrentLevel()
-        {
-            return Levels[Player.Position.Level];
-        }
- 
         public List<Actor> GetActorsInLevel(string level)
         {
             List<Actor> actors = new List<Actor>();
@@ -48,9 +49,10 @@ namespace Adventure
         {
             if (levelName == null)
                 levelName = Player.Position.Level;
+            
             string display = "";
+            string[] map   = CopyMap(Levels[Player.Position.Level]);
 
-            string[] map = CopyMap(Levels[Player.Position.Level]);
             foreach (Actor actor in GetActorsInLevel(levelName))
             {
                 map = PlaceOnMap(map, actor.Character[0], actor.Position);

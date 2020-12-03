@@ -1,15 +1,16 @@
 Adventure Character Key
-Created by William Dann
+    Created by William Dann
 
 Characters
 --------------
 @ : This is you, the player.
-H : A human
+h : A human
+g : A goblin
 
 Terrain
 --------------
-_ : An empty groud tile
+. : A grass tile
+, : A grass tile
 = : An elevated grounud tile (like a bridge)
-. : Water
-
-0 : A tree's trunk
+0 : A tree trunk
+~ : Flowing water

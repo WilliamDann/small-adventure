@@ -9,16 +9,34 @@ namespace Adventure
 {
     class Program
     {
+        static string LoadFile(string path)
+        {
+            try
+            {
+                return File.ReadAllText(path);
+            } catch (IOException)
+            {
+                return $"Failed to load file {path}. Please reload the program.";
+            }
+        }
+
         static void Main(string[] args)
         {
             World world = LoadWorld();
 
-            // FileEncounter controlMenu = new FileEncounter("screens/controls.txt");
-            // FileEncounter keyMenu     = new FileEncounter("screens/key.txt");
+            string introScreen    = LoadFile("screens/intro.txt");
+            string controlsScreen = LoadFile("screens/controls.txt");
+            string keysScreen     = LoadFile("screens/key.txt");
 
             Console.Clear();
             Console.WriteLine("What is your name?");
             world.Player.Name = Console.ReadLine();
+
+            Console.Clear();
+            Console.WriteLine(introScreen);
+
+            Console.WriteLine("Press any key to start playing...");
+            Console.ReadKey();
 
             bool done = false;
             while (!done)
@@ -59,10 +77,16 @@ namespace Adventure
                         Console.ReadKey();
                         break;
                     case "help":
-                        // controlMenu.Run();
+                        Console.Clear();
+                        Console.WriteLine(controlsScreen);
+                        Console.WriteLine("Press any key to continue...");
+                        Console.ReadKey();
                         break;
                     case "key":
-                        // keyMenu.Run();
+                        Console.Clear();
+                        Console.WriteLine(keysScreen);
+                        Console.WriteLine("Press any key to continue...");
+                        Console.ReadKey();
                         break;
                 }
 

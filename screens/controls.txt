@@ -1,11 +1,13 @@
 Adventure Controls
-Created by William Dann
+    Created by William Dann
 
 General
 -----------------
-key:   list key of map characters seen on the map and their meanings
-help:  list commands
-quit:  Quit Program
+inventory: Manage your inventory
+
+key:       List key of map characters and their meanings
+help:      List commands
+quit:      Quit Program
 
 Movment
 -----------------
@@ -13,5 +15,7 @@ up:    Move Up
 down:  Move Down
 left:  Move Right
 right: Move Right
+
+Each movment control can be shorthanded by using it's first character
 
 Move into an NPC / Object to interact with it.

@@ -28,11 +28,8 @@ namespace Adventure
     {
         public string Name { get; set; }
 
-        public int Defence      { get; set; }  = 0;
+        public int Defence      { get; set; } = 0;
         public int Attack       { get; set; } = 0;
-
-        public int Durability    { get; set; } = 100;
-        public int DurabilityMax { get; set; } = 100;
 
         public int Value { get; set; } = 0;
 

@@ -49,16 +49,16 @@ namespace Adventure
             }
             else
             {
-                Direction outDirection = (Direction)Levels[newPos.Level].FindDirectionOutOfMap(new Position(newPos.X, newPos.Y));
+                Direction? outDirection = Levels[newPos.Level].FindDirectionOutOfMap(new Position(newPos.X, newPos.Y));
+                string newLevel         = Levels[newPos.Level].GetLevelNameInDirection((Direction)outDirection);
 
-                string newLevel = Levels[newPos.Level].GetLevelNameInDirection(outDirection);
                 if (newLevel == null)
                 {
                     return;
                 }
 
                 newPos = new WorldPosition(
-                    FindNewLevelPosition(newPos, Levels[newLevel], outDirection),
+                    FindNewLevelPosition(newPos, Levels[newLevel], (Direction)outDirection),
                     newLevel
                 );
 

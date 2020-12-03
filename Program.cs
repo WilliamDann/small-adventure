@@ -67,6 +67,9 @@ namespace Adventure
                         world.MoveActor(world.Player, new Position(1, 0));
                         break;
 
+                    case "inventory":
+                        break;
+
                     // menus
                     case "quit":
                         done = true;

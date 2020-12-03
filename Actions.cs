@@ -9,18 +9,20 @@ namespace Adventure
     {
         public static T GetListItem<T>(List<T> list)
         {
+            if (list.Count == 0) throw new InvalidOperationException("cannot choose from an empty list");
+            
             try
             {
                 return list[int.Parse(ReadLine())];
             }
             catch (FormatException)
             {
-                WriteLine("Input invalid, please enter an integer");
+                WriteLine("Input invalid, please enter an integer! Type quit to stop.");
                 return GetListItem<T>(list);
             }
             catch (ArgumentOutOfRangeException)
             {
-                WriteLine("Please enter a value in the list!");
+                WriteLine("Please enter a value in the list! Type quit to stop.");
                 return GetListItem<T>(list);
             }
         }
@@ -113,17 +115,31 @@ namespace Adventure
                 ListItems(other.Inventory);
                 WriteLine("---");
 
-                WriteLine("1. Add item to taken\n2. Add item to given\n3.Finish Trade\n4.Quit");
+                WriteLine("1. Take an Item\n2. Give an item\n3.Finish Trade\n4.Quit");
                 Write("Enter an option: ");
 
                 switch (ReadLine())
                 {
                     case "1":
+                        if (other.Inventory.Count == 0)
+                        {
+                            WriteLine($"{other.Name}'s Inventory is empty");
+                            WriteLine("Press any key to continue...");
+                            ReadKey();
+                            continue;
+                        }
                         Write($"Enter Number from {other.Name}'s Inventory: ");
 
                         taken.Add(GetListItem<Item>(other.Inventory));
                         break;
                     case "2":
+                        if (player.Inventory.Count == 0)
+                        {
+                            WriteLine("Your Inventory is empty");
+                            WriteLine("Press any key to continue...");
+                            ReadKey();
+                            continue;
+                        }
                         Write("Enter Number from Your Inventory: ");
                         
                         given.Add(GetListItem<Item>(player.Inventory));
@@ -168,6 +184,17 @@ namespace Adventure
                         break;
                 }
             } while (trading);
+        }
+    
+        public static void ManageInventory(Actor player)
+        {
+            Console.Clear();
+            Console.WriteLine($"{player.Name}'s Inventory: ");
+
+            ListItems(player.Inventory);
+
+            Write("Enter an item to manage: ");
+            Item item = GetListItem<Item>(player.Inventory);
         }
     }
 }

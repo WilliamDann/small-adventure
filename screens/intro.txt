@@ -1,6 +1,7 @@
-Welcome to SmallAdventure! You are trapped outside a town that you need to ender, but the guard will not let you in! You must earn the trust of the guard by doing what they ask to gain passage into the town.
+Welcome to SmallAdventure! You are trapped outside a town that you need to enter, but the guard will not let you in! You must earn the trust of the guard by doing what they ask to gain passage into the town.
 
+Type "map" to see a map of the world
 Type "help" for a list of commands in the game
 Type "key" to see a list of meanings for the characters on the map
 
-Good luck!
+Good luck nad have fun!

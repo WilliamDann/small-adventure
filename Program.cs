@@ -27,6 +27,7 @@ namespace Adventure
             string introScreen    = LoadFile("screens/intro.txt");
             string controlsScreen = LoadFile("screens/controls.txt");
             string keysScreen     = LoadFile("screens/key.txt");
+            string mapScreen      = LoadFile("screens/map.txt");
 
             Console.Clear();
             Console.WriteLine("What is your name?");
@@ -46,6 +47,7 @@ namespace Adventure
                 Console.WriteLine(world.GetLevelMap());
                 Console.WriteLine(world.Player);
 
+                Console.WriteLine("Enter a command:");
                 string input = Console.ReadLine().ToLower();
                 switch (input)
                 {
@@ -68,8 +70,15 @@ namespace Adventure
                         break;
 
                     case "inventory":
+                        Actions.ManageInventory(world.Player);
                         break;
-
+                    case "map":
+                        Console.Clear();
+                        Console.WriteLine(mapScreen);
+                        Console.WriteLine("Press any key to continue...");
+                        Console.ReadKey();
+                        break;
+                        
                     // menus
                     case "quit":
                         done = true;

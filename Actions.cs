@@ -17,12 +17,12 @@ namespace Adventure
             }
             catch (FormatException)
             {
-                WriteLine("Input invalid, please enter an integer! Type quit to stop.");
+                WriteLine("Input invalid, please enter an integer!");
                 return GetListItem<T>(list);
             }
             catch (ArgumentOutOfRangeException)
             {
-                WriteLine("Please enter a value in the list! Type quit to stop.");
+                WriteLine("Please enter a value in the list!");
                 return GetListItem<T>(list);
             }
         }
@@ -189,12 +189,71 @@ namespace Adventure
         public static void ManageInventory(Actor player)
         {
             Console.Clear();
-            Console.WriteLine($"{player.Name}'s Inventory: ");
+            Console.WriteLine(player);
+
+            if (player.Inventory.Count == 0)
+            {
+                WriteLine("You inventory is empty.");
+                return;
+            }
 
             ListItems(player.Inventory);
-
-            Write("Enter an item to manage: ");
+            Write("Choose an item: ");
             Item item = GetListItem<Item>(player.Inventory);
+            
+            WriteLine("1. Equip Item\n2. Use Item\n3. Drop Item\n4. Quit");
+            switch (ReadLine())
+            {
+                case "1":
+                    if (item.Attack > 0)
+                    {
+                        player.Inventory.Remove(item);
+                        player.Inventory.Add(player.Weapon);
+
+                        player.Weapon = item;
+                    }
+                    else if (item.Defence > 0)
+                    {
+                        player.Inventory.Remove(item);
+                        player.Inventory.Add(player.Armor);
+
+                        player.Armor = item;
+                    } else
+                    {
+                        WriteLine($"{item.Name} is not a weapon or armor");
+                    }
+
+                    break;
+                case "2":
+                    if (item.Effect == null)
+                    {
+                        WriteLine("This item has no effects");
+                    } else 
+                    {
+                        item.Effect.Apply(player);
+                        WriteLine($"Used {item}");
+                    }
+
+                    break;
+                case "3":
+                    player.Inventory.Remove(item);
+                    WriteLine("Item Dropped");
+
+                    break;
+                case "4":
+                    return;
+                default:
+                    WriteLine("Please enter a number from 1-4");
+                    
+                    Console.WriteLine("Press any key to continue...");
+                    Console.ReadKey();
+
+                    ManageInventory(player);
+                    break;
+            }
+
+            Console.WriteLine("Press any key to continue...");
+            Console.ReadKey();
         }
     }
 }

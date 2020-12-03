@@ -1,0 +1,7 @@
+                The River
+                    ▲
+The Forest ◄ The Crossroads ► The Bridge
+                    ▼
+                The Town Gates
+                    ▼
+                The Town (Win)

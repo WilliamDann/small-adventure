@@ -1,10 +1,6 @@
 {
     "The Crossroads": {
         "Name": "The Crossroads",
-        "SpawnPosition": {
-            "X": 2,
-            "Y": 3
-        },
         "SurroundingLevels": {
             "The River": "North",
             "The Bridge": "East",
@@ -21,10 +17,6 @@
     },
     "The River": {
         "Name": "The River",
-        "SpawnPosition": {
-            "X": 3,
-            "Y": 7
-        },
         "SurroundingLevels": {
             "The Crossroads": "South"
         },
@@ -41,10 +33,6 @@
     },
     "The Bridge": {
         "Name": "The Bridge",
-        "SpawnPosition": {
-            "X": 0,
-            "Y": 4
-        },
         "SurroundingLevels": {
             "The Crossroads": "West"
         },
@@ -59,10 +47,6 @@
     },
     "The Forest": {
         "Name": "The Forest",
-        "SpawnPosition": {
-            "X": 8,
-            "Y": 3
-        },
         "SurroundingLevels": {
             "The Crossroads": "East"
         },
@@ -79,12 +63,9 @@
     },
     "The Town Gates": {
         "Name": "The Town Gates",
-        "SpawnPosition": {
-            "X": 2,
-            "Y": 0
-        },
         "SurroundingLevels": {
-            "The Crossroads": "North"
+            "The Crossroads": "North",
+            "The Town": "South"
         },
         "Map": [
             ".,.,,",
@@ -93,5 +74,26 @@
             "0.,,0",
             "00,00"
         ]
+    },
+    "The Town": {
+        "Name": "The Town",
+        "SurroundingLevels": {
+            "The Town Gates": "North"
+        },
+        "Map": [
+            "00,000000000~~~~...",
+            ".,.,,..,.,.,~~~~.0.",
+            ".||||.,||||.,~~~~..",
+            ",||||,.||||.0.~~~~.",
+            ".||||.,||||,.,~~~~.",
+            "..,...,,.,..,..~~~~",
+            ",..,.,..,.,.,..~~~~",
+            ".||||,.||||.,.,.,,.",
+            ",||||,,||||.0,.,.,.",
+            ".||||.,||||,.,.0.0.",
+            "You Win! Thanks for playing!"
+
+        ]
+        
     }
 }

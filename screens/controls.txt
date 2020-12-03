@@ -1,9 +1,9 @@
 Adventure Controls
     Created by William Dann
-
 General
 -----------------
-inventory: Manage your inventory
+inventory : Manage your inventory
+map       : View a map of the area
 
 key:       List key of map characters and their meanings
 help:      List commands

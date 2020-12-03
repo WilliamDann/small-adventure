@@ -50,19 +50,6 @@ namespace Adventure
             return Map[position.Y][position.X];
         }
 
-        public void SetCharAt(char character, Position position)
-        {
-            for (int y = 0; y < Map.Length; y++)
-            {
-                if (y == position.Y)
-                {
-                    char[] row = Map[y].ToCharArray();
-                    row[position.X] = character;
-                    Map[y] = new string(row);
-                }
-            }
-        }
-
         public override string ToString()
         {
             string display = "";

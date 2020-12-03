@@ -26,6 +26,50 @@ namespace Adventure
             BuildBaseMenu().Run(this, other);
         }
 
+        public void Move(World world, Position distance)
+        {
+                WorldPosition newPos = new WorldPosition
+            (
+                Position.X + distance.X,
+                Position.Y + distance.Y,
+                Position.Level
+            );
+
+            if (world.Levels[newPos.Level].PositionIsOnMap(newPos))
+            {
+                char tile = world.Levels[newPos.Level].GetCharAt(newPos);
+
+                if (!world.WalkableTiles.Contains(tile))
+                    return;
+
+                Actor interact = world.GetActorAtPosition(newPos);
+                if (interact != null)
+                {
+                    Interact(interact);
+                    return;
+                }
+
+                Position = newPos;
+            }
+            else
+            {
+                Direction? outDirection = world.Levels[newPos.Level].FindDirectionOutOfMap(new Position(newPos.X, newPos.Y));
+                string newLevel         = world.Levels[newPos.Level].GetLevelNameInDirection((Direction)outDirection);
+
+                if (newLevel == null)
+                {
+                    return;
+                }
+
+                newPos = new WorldPosition(
+                    world.FindNewLevelPosition(newPos, world.Levels[newLevel], (Direction)outDirection),
+                    newLevel
+                );
+
+                Position = newPos;
+            }
+        }
+
         public void Attack(Actor other, bool output=true)
         {
             int diff =  -Weapon.Attack + other.Armor.Defence;

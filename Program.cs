@@ -54,19 +54,19 @@ namespace Adventure
                     // movment
                     case "up":
                     case "u":
-                        world.MoveActor(world.Player, new Position(0, -1));
+                        world.Player.Move(world, new Position(0, -1));
                         break;
                     case "down":
                     case "d":
-                        world.MoveActor(world.Player, new Position(0, 1));
+                        world.Player.Move(world, new Position(0, 1));
                         break;
                     case "left":
                     case "l":
-                        world.MoveActor(world.Player, new Position(-1, 0));
+                        world.Player.Move(world, new Position(-1, 0));
                         break;
                     case "right":
                     case "r":
-                        world.MoveActor(world.Player, new Position(1, 0));
+                        world.Player.Move(world, new Position(1, 0));
                         break;
 
                     case "inventory":

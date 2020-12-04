@@ -52,32 +52,32 @@ namespace Adventure
             }
         }
 
-        public static void Fight(Actor player, Actor other)
+        public static void Fight(Actor first, Actor second)
         {
             do
             {
                 Console.Clear();
-                WriteLine($"{player}\n\nvs.\n\n{other} ");
+                WriteLine($"{first}\n\nvs.\n\n{second} ");
 
-                player.Attack(other);
-                if (other.Hp <= 0)
+                first.Attack(second);
+                if (second.Hp <= 0)
                 {
-                    WriteLine($"{other.Name} has died.");
+                    WriteLine($"{second.Name} has died.");
                     WriteLine("Loot gained: ");
-                    ListItems(other.Inventory);
-                    foreach (Item item in other.Inventory)
-                        player.Inventory.Add(item);
+                    ListItems(second.Inventory);
+                    foreach (Item item in second.Inventory)
+                        first.Inventory.Add(item);
 
                     break;
                 }
 
 
-                other.Attack(player);
-                if (player.Hp <= 0)
+                second.Attack(first);
+                if (first.Hp <= 0)
                 {
-                    foreach (Item item in player.Inventory)
-                        other.Inventory.Add(item);
-                    WriteLine($"{player.Name} has died.");
+                    foreach (Item item in first.Inventory)
+                        second.Inventory.Add(item);
+                    WriteLine($"{first.Name} has died.");
 
                     break;
                 }
